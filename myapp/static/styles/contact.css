@@ -1,0 +1,582 @@
+/* myapp/static/styles/contact.css */
+
+:root {
+    --contact-font-primary: 'Poppins', sans-serif;
+    --contact-color-accent: var(--rooms-color-accent, #d49d37);
+    /* Reutilizar o definir */
+    --contact-text-light: #ffffff;
+    --contact-text-dark: #333;
+    --contact-bg-light-section: #f9f9f9;
+    /* Similar a tourism.css */
+    --contact-border-color: #e0e0e0;
+    --contact-input-bg: #ffffff;
+    --contact-input-focus-border: var(--contact-color-accent);
+    --contact-input-focus-shadow: rgba(212, 157, 55, 0.25);
+    /* Usando el color de acento */
+}
+
+html[data-theme="dark"] {
+    --contact-text-dark: #e9ecef;
+    --contact-bg-light-section: #000000;
+    --contact-border-color: #495057;
+    --contact-input-bg: #2c2c2c;
+    --contact-input-focus-shadow: rgba(212, 157, 55, 0.35);
+}
+
+.contact-page-content .page-section {
+    padding: 70px 0;
+}
+
+.contact-page-content .section-title {
+    /* Para el título del mapa */
+    font-family: var(--contact-font-primary);
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--current-text-color);
+    text-align: center;
+}
+
+/* HERO DE CONTACTO */
+.contact-hero-banner {
+    position: relative;
+    min-height: 80vh;
+    /* Ligeramente más bajo, ya que el contenido principal es el formulario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--contact-text-light);
+    background-image: url('../image/hero_main_background.webp');
+    /* CAMBIA ESTA IMAGEN */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 80px 20px;
+}
+
+/* Reutilizar .hero-overlay y .hero-content de rooms.css o main.css si son genéricos */
+/* Si no, copiarlos y adaptarlos aquí: */
+.contact-hero-banner .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    z-index: 1;
+}
+
+.contact-hero-banner .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-hero-banner .hero-content h1 {
+    font-family: var(--contact-font-primary);
+    /* O tu fuente de heading global */
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    color: var(--contact-text-light);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.contact-hero-banner .hero-content .subtitle {
+    font-size: 1.15rem;
+    color: #e9e9e9;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.button.btn-hero-contact {
+    padding: 14px 32px;
+    border: 2px solid var(--contact-text-light);
+    color: var(--contact-text-light);
+    background-color: transparent;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease;
+    font-family: var(--contact-font-primary);
+}
+
+.button.btn-hero-contact:hover {
+    background-color: var(--contact-text-light);
+    color: #000000;
+    /* O el color de fondo del hero */
+}
+
+
+/* SECCIÓN PRINCIPAL DE CONTACTO */
+.contact-main-section {
+    background-color: var(--contact-bg-light-section);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Columna de info más pequeña */
+    gap: 50px;
+    align-items: flex-start;
+    /* Alinear al inicio si las columnas tienen alturas diferentes */
+}
+
+/* Columna de Información */
+.contact-details-column {
+    background-color: var(--rooms-bg-card-light);
+    /* Reutilizar o definir */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="dark"] .contact-details-column {
+    background-color: var(--rooms-bg-card-dark);
+}
+
+.section-subtitle-alt {
+    /* Un subtítulo alternativo para las columnas */
+    font-family: var(--contact-font-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--contact-color-accent);
+    display: inline-block;
+}
+
+.contact-intro-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--current-text-muted-color);
+    margin-bottom: 25px;
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: var(--current-text-muted-color);
+}
+
+.contact-info-list li i {
+    font-size: 1.3rem;
+    color: var(--contact-color-accent);
+    margin-right: 15px;
+    margin-top: 3px;
+    /* Alineación vertical */
+    width: 25px;
+    /* Ancho fijo para alineación */
+    text-align: center;
+}
+
+.contact-info-list li strong {
+    display: block;
+    color: var(--current-text-color);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.contact-info-list li a {
+    color: var(--contact-color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info-list li a:hover {
+    color: darken(var(--contact-color-accent), 10%);
+    text-decoration: underline;
+}
+
+.social-links-contact {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--contact-border-color);
+}
+
+.social-links-contact p strong {
+    color: var(--current-text-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.social-links-contact a {
+    color: var(--current-text-muted-color);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links-contact a:hover {
+    color: var(--contact-color-accent);
+}
+
+.modern-contact-form .form-group {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.modern-contact-form label {
+    display: flex;
+    /* Para alinear icono con texto */
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--current-text-color);
+}
+
+.modern-contact-form label i {
+    margin-right: 10px;
+    color: var(--contact-color-accent);
+    font-size: 1.1em;
+}
+
+.required-asterisk {
+    color: var(--reservations-color-error, #dc3545);
+    margin-left: 4px;
+}
+
+.form-control {
+    /* Reutilizar de reservations.css si es global o copiar/adaptar */
+    width: 100%;
+    padding: 12px 15px;
+    padding-left: 40px;
+    /* Espacio para el icono si se pone dentro */
+    border: 1px solid var(--contact-border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--contact-font-primary);
+    background-color: var(--contact-input-bg);
+    color: var(--current-text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Ajuste para intl-tel-input que añade su propio padding */
+.iti--allow-dropdown input.form-control,
+.iti--separate-dial-code input.form-control {
+    padding-left: 52px;
+    /* Ajustar según el ancho del selector de país */
+}
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+
+@keyframes bounceArrow {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--contact-input-focus-border);
+    box-shadow: 0 0 0 0.2rem var(--contact-input-focus-shadow);
+}
+
+.form-control.invalid {
+    /* Estilo para campos inválidos */
+    border-color: var(--reservations-color-error, #dc3545) !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.form-control::placeholder {
+    color: var(--current-text-muted-color);
+    opacity: 0.7;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+    padding-left: 15px;
+    /* Textarea no suele llevar icono dentro */
+}
+
+.error-message {
+    /* Estilo de mensajes de error (reutilizar de reservations.css si es global) */
+    display: block;
+    font-size: 0.85rem;
+    color: var(--reservations-color-error, #dc3545);
+    margin-top: 5px;
+    min-height: 1.2em;
+}
+
+.form-messages-area {
+    /* Estilo para mensajes generales del form (reutilizar de reservations.css) */
+    /* ... copiar estilos de .form-messages-area de reservations.css ... */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: none;
+    border: 1px solid transparent;
+}
+
+.form-messages-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    display: block;
+}
+
+.form-messages-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    display: block;
+}
+
+.form-messages-area ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+
+.form-submit-area {
+    text-align: right;
+    /* Alinear botón a la derecha */
+    margin-top: 25px;
+}
+
+.btn-enviar-contact {
+    background-color: var(--contact-color-accent);
+    color: var(--contact-text-light);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--contact-font-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar-contact:hover {
+    background-color: darken(var(--contact-color-accent), 10%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-enviar-contact i {
+    margin-right: 8px;
+}
+
+/* SECCIÓN MAPA */
+.map-section {
+    padding-bottom: 0;
+    /* Quitar padding inferior si el mapa va hasta el borde */
+}
+
+.map-section .section-title {
+    margin-bottom: 30px;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px;
+    /* Altura del mapa */
+    overflow: hidden;
+    /* Por si el iframe intenta desbordar */
+    /* border-radius: 10px; Opcional si quieres bordes redondeados para el mapa */
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); Opcional */
+}
+
+.map-container iframe {
+    filter: grayscale(30%) contrast(90%) brightness(105%);
+    /* Estilo sutil al mapa */
+    transition: filter 0.3s ease;
+}
+
+/* .map-container iframe:hover { filter: none; } */
+
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .contact-hero-banner {
+        min-height: 65vh;
+        padding: 80px 20px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        /* Apilar columnas */
+        gap: 40px;
+    }
+
+    .contact-details-column {
+        margin-bottom: 0;
+        /* Quitar margen si el gap ya da espacio */
+    }
+
+    .contact-hero-banner .hero-content h1 {
+        font-size: 3rem;
+        /* Reducir ligeramente */
+    }
+
+    .contact-hero-banner .hero-content .subtitle {
+        font-size: 1.15rem;
+        max-width: 600px;
+    }
+
+    .button.btn-hero-contact {
+        font-size: 0.9rem;
+        padding: 12px 28px;
+    }
+}
+
+@media (min-width: 500px) {
+
+    /* O el breakpoint donde el dial code se pone a la izquierda */
+    .iti--separate-dial-code.iti--show-flags input.form-control {
+        padding-left: 90px;
+        /* Ajustar si es necesario */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .contact-hero-banner {
+        min-height: 55vh;
+        /* Reducir altura significativamente */
+        padding: 60px 15px;
+        /* Reducir padding */
+        background-attachment: scroll;
+        /* Desactivar parallax fijo en móviles por rendimiento y usabilidad */
+    }
+
+    .contact-hero-banner {
+        min-height: 50vh;
+    }
+
+    .contact-hero-banner .hero-content h1 {
+        font-size: 2.5rem;
+        /* Reducción considerable */
+        margin-bottom: 0.5em;
+    }
+
+    .contact-hero-banner .hero-content .subtitle {
+        font-size: 1.05rem;
+        max-width: 90%;
+        /* Que ocupe más el ancho disponible */
+        margin-bottom: 1.5em;
+    }
+
+    .section-subtitle-alt {
+        font-size: 1.6rem;
+    }
+
+    .modern-contact-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .modern-contact-form .form-row .form-group:first-child {
+        margin-bottom: 22px;
+    }
+
+    .form-submit-area {
+        text-align: center;
+    }
+
+    .btn-enviar-contact {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .button.btn-hero-contact {
+        font-size: 0.85rem;
+        padding: 10px 24px;
+    }
+
+    .contact-hero-banner .scroll-down-indicator {
+        bottom: 20px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-hero-banner {
+        min-height: 50vh;
+        /* Aún más corto si es necesario, o dejar en 55vh */
+        padding: 50px 15px;
+    }
+
+    .contact-hero-banner .hero-content h1 {
+        font-size: 2rem;
+        /* Título más compacto */
+    }
+
+    .contact-hero-banner .hero-content .subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+        /* Puede ser necesario ajustar interlineado */
+    }
+
+    .contact-page-content .section-title {
+        font-size: 2rem;
+    }
+
+    /* Para título del mapa */
+    .section-subtitle-alt {
+        font-size: 1.4rem;
+    }
+
+    .contact-details-column,
+    .modern-contact-form {
+        padding: 20px;
+    }
+
+    .button.btn-hero-contact {
+        width: 100%;
+        /* Que el botón ocupe el ancho para mejor toque */
+        max-width: 280px;
+        /* Pero no demasiado ancho */
+        display: block;
+        /* Para que width y margin:auto funcionen */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

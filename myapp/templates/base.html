@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-theme="dark"> <!-- 'dark' por defecto, JS lo cambiará -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hotel Nila - Elegancia y confort en Cajamarca, Perú">
+    <title>Hotel Nila {% block title %}{% endblock %}</title>
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Favicon (asegúrate que este logo se vea bien en la pestaña del navegador) -->
+    <link rel="icon" href="{% static 'image/logoW.png' %}" type="image/x-icon">
+
+    <!-- Font Awesome para iconos (opcional, para menú hamburguesa y redes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    {% block extra_head %}
+
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- ====== Header Moderno ====== -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/" class="logo-link">
+                <img src="{% static 'image/logoW.png' %}" alt="Logo Hotel Nila" class="logo-img logo-dark-theme">
+                <img src="{% static 'image/logoB.png' %}" alt="Logo Hotel Nila" class="logo-img logo-light-theme"
+                    style="display:none;">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">INICIO</a></li>
+                    <li><a href="/about">SOBRE NOSOTROS</a></li>
+                    <li><a href="/rooms">HABITACIONES</a></li>
+                    <li><a href="/reservations">RESERVACIONES</a></li>
+                    <li><a href="/tourism">TURISMO</a></li>
+                    <li><a href="/gallery">GALERÍA</a></li>
+                    <li><a href="/contact">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-controls">
+                <button id="theme-toggle-button" class="theme-toggle" aria-label="Cambiar tema">
+                    <i class="fas fa-sun"></i> <!-- Icono para tema claro -->
+                    <i class="fas fa-moon" style="display:none;"></i> <!-- Icono para tema oscuro -->
+                </button>
+                <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                    <i class="fas fa-bars"></i> <!-- Icono Hamburguesa -->
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ====== Footer Moderno ====== -->
+    <footer class="site-footer-main">
+        <div class="container footer-container-main">
+            <div class="footer-column">
+                <h4>Hotel Nila</h4>
+                <img src="{% static 'image/logoW.png' %}" alt="Logo Hotel Nila en Footer"
+                    class="footer-logo logo-dark-theme">
+                <img src="{% static 'image/logoB.png' %}" alt="Logo Hotel Nila en Footer"
+                    class="footer-logo logo-light-theme" style="display:none;">
+                <p>Elegancia y confort en el corazón de la ciudad.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="/about">Sobre Nosotros</a></li>
+                    <li><a href="/rooms">Habitaciones</a></li>
+                    <li><a href="/gallery">Galería</a></li>
+                    <li><a href="/reservations">Reservar Ahora</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="https://www.google.com/maps/uv?pb=!1s0x91b25b6263b49375%3A0x1837d5b827444f24!3m1!7e115!4s%2Fmaps%2Fplace%2Fjr.%2Bsilva%2Bsantisteban%2B1050%2F%40-7.1634348%2C-78.5119689%2C3a%2C75y%2C235.54h%2C90t%2Fdata%3D*213m4*211e1*213m2*211sJH3FqQO7-Uw9As-QhYeslg*212e0*214m2*213m1*211s0x91b25b6263b49375%3A0x1837d5b827444f24%3Fsa%3DX%26ved%3D2ahUKEwivru_Es6uNAxXMCbkGHZU_ISAQpx96BAg3EAA!5sjr.%20silva%20santisteban%201050%20-%20Buscar%20con%20Google!15sCgIgAQ&imagekey=!1e2!2sJH3FqQO7-Uw9As-QhYeslg&cr=le_a7&hl=es-419&ved=1t%3A206134&ictx=111"
+                        target="_blank" rel="noopener noreferrer">
+                        Jr. Silva Santiesteban 1050, Ciudad
+                    </a>
+                </p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+51917414764">+51 917 414 764</a></p>
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:hotelnilaoficial@gmail.com">hotelnilaoficial@gmail.com</a></p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61555432925031" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hotelnila/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@hotel.nila" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-main">
+            <p>© {% now "Y" %} Todos los derechos reservados | Hotel Nila | Desarrollado por Dietrich.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/theme.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Duración de la animación en ms
+            once: true,    // La animación solo se ejecuta una vez
+            offset: 120,   // Offset (en px) desde el borde original del trigger
+            easing: 'ease-in-out-quad', // Tipo de easing
+        });
+    </script>
+
+</body>
+
+</html>

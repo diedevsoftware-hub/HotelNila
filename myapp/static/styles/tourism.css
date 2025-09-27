@@ -1,0 +1,497 @@
+/* myapp/static/styles/tourism.css */
+
+:root {
+    --tourism-font-primary: 'Poppins', sans-serif;
+    /* O Inter, Playfair Display para títulos */
+    --tourism-font-heading: 'Poppins', sans-serif;
+    /* Opcional para un toque más clásico en títulos de sección */
+    --tourism-color-text-light: #ffffff;
+    --tourism-color-text-dark: #333333;
+    /* Un gris oscuro para texto principal */
+    --tourism-color-accent: var(--rooms-color-accent, #d49d37);
+    /* Reutilizar dorado o definir uno nuevo */
+    --tourism-bg-light: #f9f9f9;
+    /* Un blanco hueso o gris muy claro */
+    --tourism-card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    --tourism-border-light: #e7e7e7;
+}
+
+/* Estilos para tema oscuro (ajustar según tu main.css) */
+html[data-theme="dark"] {
+    --tourism-color-text-dark: #e9ecef;
+    --tourism-bg-light: #252525;
+    /* Un gris oscuro para fondos "claros" */
+    --tourism-card-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --tourism-border-light: #404040;
+}
+
+.tourism-page-content .page-section {
+    padding: 70px 0;
+}
+
+.tourism-page-content .section-title {
+    font-family: var(--tourism-font-heading, var(--tourism-font-primary));
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--current-text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.tourism-page-content .section-subtitle {
+    font-size: 1.15rem;
+    color: var(--current-text-muted-color);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    line-height: 1.7;
+}
+
+
+/* 1. HERO DE TURISMO */
+.tourism-hero {
+    position: relative;
+    min-height: 80vh;
+    /* O 100vh para pantalla completa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--tourism-color-text-light);
+    /* Opción A: Imagen de fondo fija */
+    background-image: url('../image/eligeeNila.jpg');
+    /* CAMBIA ESTA IMAGEN */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    /* Efecto parallax simple */
+    padding: 80px 20px;
+}
+
+/* Opción B: Estilos para Carrusel Hero (si se usa) */
+.tourism-hero .hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.tourism-hero .hero-carousel .swiper-slide {
+    background-size: cover;
+    background-position: center center;
+}
+
+.tourism-hero .hero-carousel .swiper-pagination-bullet-active {
+    background-color: var(--tourism-color-accent);
+}
+
+.tourism-hero .hero-overlay {
+    /* Siempre presente para legibilidad */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    /* Filtro oscuro */
+    z-index: 1;
+}
+
+.tourism-hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.tourism-hero h1 {
+    font-family: var(--rooms-font-primary);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    color: var(--rooms-color-text-light);
+}
+
+.tourism-hero .subtitle {
+    font-size: 1.15rem;
+    color: #e9e9e9;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Para móviles */
+}
+
+.hero-buttons .button {
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-family: var(--tourism-font-primary);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button.btn-explora {
+    padding: 14px 32px;
+    border: 2px solid var(--tourism-color-text-light);
+    color: var(--tourism-color-text-light);
+    /* O texto oscuro si el acento es muy claro */
+    background-color: transparent;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease;
+}
+
+.button.btn-explora:hover {
+    background-color: var(--tourism-color-text-light);
+    color: #000000;
+}
+
+.button.btn-contacto-turismo {
+    background-color: transparent;
+    color: var(--tourism-color-text-light);
+    border: 2px solid var(--tourism-color-text-light);
+}
+
+.button.btn-contacto-turismo:hover {
+    background-color: var(--tourism-color-text-light);
+    color: var(--tourism-color-text-dark);
+    /* Color para texto sobre fondo claro */
+    transform: translateY(-2px);
+}
+
+.hero-buttons .button i {
+    /* Para iconos en botones */
+    margin-right: 8px;
+}
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+
+@keyframes bounceArrow {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+/* SECCIÓN INTRO ACTIVIDADES E ÍCONOS */
+
+.activity-icons-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+    padding: 15px 0;
+    border-top: 1px solid var(--tourism-border-light);
+    border-bottom: 1px solid var(--tourism-border-light);
+}
+
+.activity-icons-strip span {
+    font-size: 1rem;
+    color: var(--current-text-muted-color);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.activity-icons-strip span i {
+    margin-right: 8px;
+    color: var(--tourism-color-accent);
+    font-size: 1.3em;
+}
+
+
+/* LISTADO DE LUGARES TURÍSTICOS */
+.tourist-spots-section.bg-light {
+    background-color: var(--tourism-bg-light);
+}
+
+.category-block {
+    margin-bottom: 50px;
+}
+
+.category-title {
+    font-family: var(--tourism-font-heading, var(--tourism-font-primary));
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tourism-color-accent);
+    display: inline-block;
+    /* Para que el borde solo ocupe el ancho del texto */
+}
+
+.category-title i {
+    margin-right: 10px;
+    color: var(--tourism-color-accent);
+}
+
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Para cuando solo hay una "card" grande en una categoría, como la Ruta del Queso */
+.spots-grid.full-width-spot {
+    grid-template-columns: 1fr;
+    /* Solo una columna */
+}
+
+.spots-grid.full-width-spot .spot-card {
+    /* Puedes hacerla más ancha o con layout diferente si es una sola */
+    max-width: 800px;
+    /* Ejemplo */
+    margin: 0 auto;
+    display: flex;
+    /* Para poner imagen y texto lado a lado */
+    flex-direction: row;
+    align-items: center;
+}
+
+.spots-grid.full-width-spot .spot-card img {
+    width: 40%;
+    /* Imagen más pequeña */
+    height: 250px;
+    /* Altura controlada */
+    object-fit: cover;
+    margin-right: 25px;
+    border-radius: 8px 0 0 8px;
+    /* Bordes solo a la izquierda */
+}
+
+.spots-grid.full-width-spot .spot-card .spot-content {
+    flex: 1;
+}
+
+
+.spot-card {
+    background-color: var(--rooms-bg-card-light);
+    /* Reutilizar o definir nueva variable */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--tourism-card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+html[data-theme="dark"] .spot-card {
+    background-color: var(--rooms-bg-card-dark);
+}
+
+.spot-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.spot-card img {
+    width: 100%;
+    height: 220px;
+    /* Altura fija para imágenes de cards */
+    object-fit: cover;
+    display: block;
+}
+
+.spot-content {
+    padding: 20px;
+    flex-grow: 1;
+    /* Para que el contenido se expanda */
+}
+
+.spot-content h4 {
+    font-family: var(--tourism-font-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 10px;
+}
+
+.spot-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--current-text-muted-color);
+}
+
+
+/* CTA FINAL TURISMO */
+.final-cta-tourism {
+    background-color: var(--current-bg-footer-color);
+    /* Similar al footer u otro color oscuro */
+    color: var(--tourism-color-text-light);
+}
+
+.final-cta-tourism h2 {
+    font-family: var(--tourism-font-heading, var(--tourism-font-primary));
+    font-size: 2.5rem;
+    color: var(--tourism-color-text-light);
+    margin-bottom: 15px;
+}
+
+.final-cta-tourism .subtitle {
+    color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.button.btn-cta-final-tourism {
+    padding: 15px 40px;
+    background-color: var(--tourism-color-accent);
+    color: var(--tourism-color-text-light);
+    /* O texto oscuro si el acento es muy claro */
+    border: 2px solid var(--tourism-color-accent);
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: var(--tourism-font-primary);
+}
+
+.button.btn-cta-final-tourism:hover {
+    background-color: transparent;
+    color: var(--tourism-color-accent);
+    border-color: var(--tourism-color-accent);
+}
+
+
+/* RESPONSIVE STYLES */
+@media (max-width: 992px) {
+    .tourism-hero h1 {
+        font-size: 3rem;
+    }
+
+    .tourism-hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .tourism-page-content .section-title {
+        font-size: 2.4rem;
+    }
+
+    .category-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tourism-hero {
+        min-height: 80vh;
+        /* Ajustar altura mínima en móviles */
+        height: auto;
+        /* Permitir que el contenido defina la altura */
+        padding: 100px 0;
+        /* Más padding vertical en móviles */
+    }
+
+    .tourism-hero {
+        min-height: 65vh;
+    }
+
+    .tourism-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tourism-hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .hero-buttons .button {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .tourism-page-content .section-title {
+        font-size: 2.1rem;
+    }
+
+    .category-title {
+        font-size: 1.6rem;
+    }
+
+    .spots-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Apilar cards */
+    .spots-grid.full-width-spot .spot-card {
+        flex-direction: column;
+        /* Imagen arriba del texto en móvil */
+    }
+
+    .spots-grid.full-width-spot .spot-card img {
+        width: 100%;
+        height: 220px;
+        margin-right: 0;
+        margin-bottom: 20px;
+        border-radius: 8px 8px 0 0;
+        /* Redondear esquinas superiores */
+    }
+}
+
+@media (max-width: 480px) {
+    .tourism-hero h1 {
+        font-size: 2rem;
+    }
+
+    .tourism-page-content .section-title {
+        font-size: 1.8rem;
+    }
+
+    .final-cta-tourism h2 {
+        font-size: 1.8rem;
+    }
+
+    .spot-content h4 {
+        font-size: 1.15rem;
+    }
+}

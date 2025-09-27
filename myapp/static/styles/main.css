@@ -1,0 +1,438 @@
+/* styles/main.css */
+
+/* ----- VARIABLES DE TEMA Y ESTILOS BASE ----- */
+:root {
+  --font-primary: 'Poppins', sans-serif;
+
+  /* Tema Oscuro (por defecto) */
+  --bg-color-dark: #000000;
+  --bg-color-dark-footer: #111111;
+  --text-color-dark: #ffffff;
+  --text-color-muted-dark: #cccccc;
+  --accent-color-dark: #d49d37;
+  /* Un azul brillante como acento */
+  --border-color-dark: #333333;
+  --header-bg-dark: rgba(0, 0, 0, 0.8);
+  --header-bg-scrolled-dark: rgba(0, 0, 0, 0.9);
+
+  /* Tema Claro */
+  --bg-color-light: #f4f4f4;
+  /* Un gris muy claro para el fondo */
+  --bg-color-light-footer: #e9e9e9;
+  /* Un poco más oscuro para el footer claro */
+  --text-color-light: #1a1a1a;
+  --text-color-muted-light: #555555;
+  --accent-color-light: #d49d37;
+  /* Un azul más estándar para tema claro */
+  --border-color-light: #dddddd;
+  --header-bg-light: rgba(255, 255, 255, 0.8);
+  --header-bg-scrolled-light: rgba(255, 255, 255, 0.9);
+  --header-text-light: #1a1a1a;
+}
+
+html[data-theme="dark"] {
+  --current-bg-color: var(--bg-color-dark);
+  --current-bg-footer-color: var(--bg-color-dark-footer);
+  --current-text-color: var(--text-color-dark);
+  --current-text-muted-color: var(--text-color-muted-dark);
+  --current-accent-color: var(--accent-color-dark);
+  --current-border-color: var(--border-color-dark);
+  --current-header-bg: var(--header-bg-dark);
+  --current-header-bg-scrolled: var(--header-bg-scrolled-dark);
+  --current-header-text-color: var(--text-color-dark);
+}
+
+html[data-theme="light"] {
+  --current-bg-color: var(--bg-color-light);
+  --current-bg-footer-color: var(--bg-color-light-footer);
+  --current-text-color: var(--text-color-light);
+  --current-text-muted-color: var(--text-color-muted-light);
+  --current-accent-color: var(--accent-color-light);
+  --current-border-color: var(--border-color-light);
+  --current-header-bg: var(--header-bg-light);
+  --current-header-bg-scrolled: var(--header-bg-scrolled-light);
+  --current-header-text-color: var(--header-text-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--current-bg-color);
+  color: var(--current-text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 80px;
+  /* Ajustar según la altura final del header */
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  color: var(--current-accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--current-text-muted-color);
+  /* O un color de acento más brillante */
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  min-height: calc(100vh - 80px - 300px);
+  /* Ajustar 300px si el footer es más alto/bajo */
+  /* 80px es la altura del header, 300px es una altura estimada del footer */
+}
+
+.hero-main, /* Para tu index.html */
+.rooms-hero, /* Para tu rooms.html */
+.about-hero, /* Para tu about.html */
+.contact-hero-banner, /* Para tu contact.html */
+.gallery-hero, /* Para tu gallery.html */
+.tourism-hero { /* Para tu tourism.html */
+    position: relative; /* Necesario para que z-index funcione si no lo tiene */
+    z-index: 1;         /* Un z-index base para las secciones hero */
+    /* Asegúrate que los overlays y contenido dentro de estos heros */
+    /* tengan z-index relativos a este (ej. overlay z-index: 1, contenido z-index: 2 DENTRO del hero) */
+}
+
+/* ----- HEADER STYLES ----- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--current-header-bg);
+  padding: 15px 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.site-header.scrolled {
+  background-color: var(--current-header-bg-scrolled);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link .logo-img {
+  height: 50px;
+  /* Ajusta según tu logo */
+  transition: opacity 0.3s ease;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 25px;
+  /* Espacio entre ítems del menú */
+}
+
+.main-nav ul li a {
+  color: var(--current-header-text-color);
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.main-nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--current-accent-color);
+  transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+  /* Para marcar la página activa */
+  width: 100%;
+}
+
+.main-nav ul li a:hover {
+  color: var(--current-accent-color);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle,
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--current-header-text-color);
+  font-size: 1.4rem;
+  /* Tamaño del icono */
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  color: var(--current-accent-color);
+}
+
+.menu-toggle {
+  display: none;
+  /* Oculto en desktop */
+}
+
+/* ----- FOOTER STYLES ----- */
+.site-footer-main {
+  background-color: var(--current-bg-footer-color);
+  color: var(--current-text-muted-color);
+  padding: 50px 0 0;
+  /* Padding superior, el inferior lo da el bottom bar */
+  border-top: 1px solid var(--current-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-container-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  /* Espacio entre columnas */
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+  /* Para que no se encojan demasiado antes de apilarse */
+  margin-bottom: 30px;
+}
+
+.footer-column .footer-logo {
+  max-height: 60px;
+  margin-bottom: 15px;
+}
+
+.footer-column h4 {
+  color: var(--current-text-color);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h4::after {
+  /* Pequeño subrayado decorativo para títulos */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--current-accent-color);
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a,
+.footer-column p a {
+  color: var(--current-text-muted-color);
+}
+
+.footer-column ul li a:hover,
+.footer-column p a:hover {
+  color: var(--current-accent-color);
+  text-decoration: underline;
+}
+
+.footer-column p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-column p i {
+  /* Iconos en el footer */
+  margin-right: 8px;
+  color: var(--current-accent-color);
+}
+
+.social-icons a {
+  color: var(--current-text-muted-color);
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:last-child {
+  margin-right: 0;
+}
+
+.social-icons a:hover {
+  color: var(--current-accent-color);
+}
+
+.footer-bottom-main {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+  /* Espacio sobre la línea del copyright */
+  border-top: 1px solid var(--current-border-color);
+  font-size: 0.85rem;
+}
+
+.footer-bottom-main p {
+  margin: 0;
+}
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+@keyframes bounceArrow {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ----- RESPONSIVE STYLES ----- */
+@media (max-width: 992px) {
+
+  /* Tablets y móviles grandes */
+  .main-nav {
+    display: none;
+    /* Ocultar menú normal */
+    position: absolute;
+    top: 100%;
+    /* Justo debajo del header */
+    left: 0;
+    width: 100%;
+    background-color: var(--current-header-bg-scrolled);
+    /* Fondo sólido para el menú desplegable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    backdrop-filter: blur(5px);
+  }
+
+  .main-nav.active {
+    display: block;
+    /* Mostrar cuando está activo */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .main-nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    width: 100%;
+    border-bottom: 1px solid var(--current-border-color);
+  }
+
+  .main-nav ul li:last-child a {
+    border-bottom: none;
+  }
+
+  .main-nav ul li a::after {
+    display: none;
+    /* Ocultar subrayado en móvil, no se ve bien */
+  }
+
+  .menu-toggle {
+    display: block;
+    /* Mostrar botón hamburguesa */
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Móviles */
+  body {
+    padding-top: 70px;
+    /* Ajustar si la altura del header cambia */
+  }
+
+  .logo-link .logo-img {
+    height: 40px;
+  }
+
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .footer-container-main {
+    flex-direction: column;
+    /* Apilar columnas del footer */
+    align-items: center;
+    /* Centrar contenido de las columnas */
+    text-align: center;
+  }
+
+  .footer-column {
+    min-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .footer-column h4::after {
+    /* Centrar subrayado del título */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-icons {
+    justify-content: center;
+    display: flex;
+    /* Para centrar los iconos si están solos */
+  }
+}

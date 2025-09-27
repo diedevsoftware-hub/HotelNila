@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Sobre Nosotros{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/about.css' %}">
+<!-- Incluye AOS.js si no está ya en base.html o si solo lo usarás aquí -->
+<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
+{% endblock %}
+
+{% block content %}
+<main class="about-page-content">
+
+  <!-- 1. HERO "SOBRE NOSOTROS" -->
+  <section class="about-hero">
+    <div class="about-hero-content container" data-aos="fade-up">
+      <h1>Conócenos</h1>
+      <p class="subtitle">Más que un hotel, una experiencia de elegancia y hospitalidad en cada rincón.</p>
+      <a href="#historia" class="button btn-hero-about">Nuestra Historia</a>
+    </div>
+    <a href="#historia" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- 2. SECCIÓN "NUESTRA HISTORIA" -->
+  <section id="historia" class="our-story-section page-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-right">Nuestra Esencia</h2>
+      <div class="story-grid">
+        <div class="story-image" data-aos="fade-up" data-aos-delay="100">
+          <img src="{% static 'image/hero_main_background.webp' %}" alt="Fachada histórica del Hotel Nila">
+        </div>
+        <div class="story-text" data-aos="fade-up" data-aos-delay="200">
+          <h3>El Legado de Hotel Nila</h3>
+          <p>Nacido de un sueño por crear un refugio de serenidad y lujo, Hotel Nila abrió sus puertas en el año 2024.
+            Desde entonces, nuestra pasión ha sido fusionar la calidez de la hospitalidad tradicional con un
+            diseño contemporáneo y servicios de vanguardia.</p>
+          <p>Nos inspiramos en la belleza atemporal de la sierra y en el
+            deseo de ofrecer a cada huésped momentos inolvidables. Lo que nos diferencia es nuestro compromiso
+            inquebrantable con la excelencia, la atención meticulosa al detalle y un equipo que considera a cada
+            visitante parte de nuestra familia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MISIÓN, VISIÓN Y VALORES -->
+  <section class="mission-vision-values-section page-section bg-light-transparent">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Nuestros Pilares</h2>
+      <div class="mvv-grid">
+        <div class="mvv-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="mvv-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Misión</h3>
+          <p>Ofrecer una experiencia hotelera excepcional que combine lujo, confort y un servicio personalizado,
+            superando las expectativas de nuestros huéspedes en cada estancia.</p>
+        </div>
+        <div class="mvv-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="mvv-icon"><i class="fas fa-eye"></i></div>
+          <h3>Visión</h3>
+          <p>Ser reconocidos como el destino preferido para viajeros exigentes, destacando por nuestra innovación,
+            sostenibilidad y la creación de recuerdos memorables.</p>
+        </div>
+        <div class="mvv-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="mvv-icon"><i class="fas fa-heart"></i></div>
+          <h3>Valores</h3>
+          <p>Excelencia, Hospitalidad Genuina, Integridad, Respeto y Pasión por el Detalle son la brújula que guía cada
+            una de nuestras acciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. GALERÍA VISUAL MODERNA (COLLAGE) -->
+  <section class="visual-gallery-section page-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Momentos Nila</h2>
+      <div class="gallery-collage" data-aos="fade-up" data-aos-delay="100">
+
+        
+        <a href="{% static 'image/eligeeNila.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-1">
+          <img src="{% static 'image/eligeeNila.jpg' %}" alt="Imagen 1 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/eligeNila.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-2">
+          <img src="{% static 'image/eligeNila.jpg' %}" alt="Imagen 2 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/room_1.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-3">
+          <img src="{% static 'image/room_1.jpg' %}" alt="Imagen 3 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/room_2.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-4">
+          <img src="{% static 'image/room_2.jpg' %}" alt="Imagen 4 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/terrace.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-5">
+          <img src="{% static 'image/terrace.jpg' %}" alt="Imagen 5 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/slide3.jpg' %}" data-fancybox="about-gallery" class="gallery-item collage-item-6">
+          <img src="{% static 'image/slide3.jpg' %}" alt="Imagen 6 del collage del Hotel Nila" loading="lazy">
+        </a>
+       <!--  <a href="{% static 'image/SobreeNosotros.jpg' %}" data-fancybox="about-gallery"
+          class="gallery-item collage-item-7">
+          <img src="{% static 'image/SobreeNosotros.jpg' %}" alt="Imagen 7 del collage del Hotel Nila" loading="lazy">
+        </a>
+        <a href="{% static 'image/sobreeNosotros.jpg' %}" data-fancybox="about-gallery"
+          class="gallery-item collage-item-8">
+          <img src="{% static 'image/sobreeNosotros.jpg' %}" alt="Imagen 8 del collage del Hotel Nila" loading="lazy">
+        </a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BLOQUE “¿POR QUÉ ELEGIRNOS?” -->
+  <!--
+  <section class="why-choose-us-section page-section bg-dark-transparent">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Tu Experiencia Nila</h2>
+      <div class="why-choose-grid">
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-water"></i>
+          <h4>Ubicación Privilegiada</h4>
+          <p>Despierta con vistas al mar y acceso directo a las mejores playas.</p>
+        </div>
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="150">
+          <i class="fas fa-bed"></i>
+          <h4>Habitaciones de Lujo</h4>
+          <p>Diseño sofisticado y comodidades premium para un descanso absoluto.</p>
+        </div>
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-utensils"></i>
+          <h4>Gastronomía Exquisita</h4>
+          <p>Sabores locales e internacionales en nuestro restaurante gourmet.</p>
+        </div>
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="250">
+          <i class="fas fa-concierge-bell"></i>
+          <h4>Atención Personalizada</h4>
+          <p>Un equipo dedicado a hacer de tu estancia una experiencia inolvidable.</p>
+        </div>
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-spa"></i>
+          <h4>Bienestar y Relax</h4>
+          <p>Spa, piscina y actividades diseñadas para tu rejuvenecimiento.</p>
+        </div>
+        <div class="why-choose-item" data-aos="fade-up" data-aos-delay="350">
+          <i class="fas fa-wifi"></i>
+          <h4>Conectividad Total</h4>
+          <p>Wifi de alta velocidad gratuito en todas nuestras instalaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- 6. CTA FINAL ELEGANTE -->
+  <!--<section class="final-cta-section page-section">
+    <div class="container text-center" data-aos="fade-up">
+      <h2>¿Listo para conocernos en persona?</h2>
+      <p class="subtitle">Descubre por qué Hotel Nila es más que un destino, es una experiencia.</p>
+      <a href="{% url 'reservations' %}" class="button btn-cta-final">Haz tu reserva ahora</a>
+    </div>
+  </section>-->
+
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<!-- Incluye AOS.js si no está ya en base.html -->
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true, // La animación solo se ejecuta una vez
+        offset: 100, // Offset (en px) desde el borde original del trigger
+      });
+    </script> -->
+
+<!-- Incluye Fancybox para la galería (si lo usas) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  Fancybox.bind("[data-fancybox='about-gallery']", {
+    // Tus opciones personalizadas de Fancybox aquí
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Contáctanos{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<!-- intl-tel-input CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+<link rel="stylesheet" href="{% static 'styles/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="contact-page-content">
+
+    <!-- HERO CONTACTO (ESTILO SIMILAR A OTRAS PÁGINAS) -->
+    <section class="contact-hero-banner"> 
+        <div class="hero-overlay"></div> 
+        <div class="hero-content container text-center" data-aos="fade-up"> 
+            <h1>Contáctanos</h1>
+            <p class="subtitle">Estamos aquí para ayudarte con tus consultas, reservas o cualquier información que
+                necesites sobre Hotel Nila.</p>
+            <a href="#contact-form-section" class="button btn-hero-contact">Escríbenos Ahora</a>
+        </div>
+        <a href="#contact-form-section" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- SECCIÓN PRINCIPAL DE CONTACTO -->
+    <section id="contact-form-section" class="contact-main-section page-section">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- Columna Izquierda: Información de Contacto Detallada -->
+                <div class="contact-details-column" data-aos="fade-up">
+                    <h2 class="section-subtitle-alt">Ponte en Contacto</h2>
+                    <p class="contact-intro-text">
+                        No dudes en llamarnos, enviarnos un correo o visitarnos. Nuestro equipo está listo para
+                        asistirte.
+                    </p>
+                    <ul class="contact-info-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Dirección:</strong>
+                                <p>Jr. Silva Santiesteban 1050, Cajamarca, Perú</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Celular / WhatsApp:</strong>
+                                <p><a href="https://wa.me/51917414764" target="_blank" rel="noopener noreferrer">+51 917
+                                        414 764</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Correo Electrónico:</strong>
+                                <p><a href="mailto:hotelnilaoficial@gmail.com">hotelnilaoficial@gmail.com</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horario de Atención:</strong>
+                                <p>Recepción 24 horas. <br>Consultas y Reservas: Lunes a Domingo, 7:00 AM - 10:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="social-links-contact">
+                        <p><strong>Síguenos:</strong></p>
+                        <a href="https://www.facebook.com/profile.php?id=61555432925031" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/hotelnila/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@hotel.nila" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario de Contacto -->
+                <div class="contact-form-column" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-subtitle-alt">Envíanos un Mensaje</h2>
+                    <form id="contactForm" method="post" class="modern-contact-form" novalidate>
+                        {% csrf_token %}
+                        <div id="form-contact-messages" class="form-messages-area"></div>
+
+                        <div class="form-group">
+                            <label for="nombres"><i class="fas fa-user"></i> Nombres y Apellidos <span
+                                    class="required-asterisk">*</span></label>
+                            <input type="text" id="nombres" name="nombres" placeholder="Tu nombre completo"
+                                class="form-control">
+                            <span class="error-message" id="error_nombres"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="correo"><i class="fas fa-at"></i> Correo Electrónico</label>
+                                <input type="email" id="correo" name="correo" placeholder="tu.correo@ejemplo.com"
+                                    class="form-control">
+                                <span class="error-message" id="error_correo"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono"><i class="fas fa-mobile-alt"></i> Celular <span
+                                        class="required-asterisk">*</span></label>
+                                <input type="tel" id="telefono" name="telefono" class="form-control">
+                                <span class="error-message" id="error_telefono"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="asunto"><i class="fas fa-info-circle"></i> Asunto <span
+                                    class="required-asterisk">*</span></label>
+                            <input type="text" id="asunto" name="asunto" placeholder="Motivo de tu consulta"
+                                class="form-control">
+                            <span class="error-message" id="error_asunto"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje"><i class="fas fa-comment-dots"></i> Mensaje <span
+                                    class="required-asterisk">*</span></label>
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."
+                                class="form-control"></textarea>
+                            <span class="error-message" id="error_mensaje"></span>
+                        </div>
+
+                        <div class="form-submit-area">
+                            <button type="submit" class="btn-enviar-contact"><i class="fas fa-paper-plane"></i> Enviar
+                                Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN MAPA DE UBICACIÓN -->
+    <section class="map-section">
+        <h2 class="section-title" data-aos="fade-up">Encuéntranos Fácilmente</h2>
+        <div class="map-container" data-aos="fade-up" data-aos-delay="100">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.088453886587!2d-78.5159818240371!3d-7.162995992907098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91b25b1a2030616b%3A0x9075955073964ff5!2sHotel%20NILA!5e0!3m2!1ses-419!2spe!4v1700000000000!5m2!1ses-419!2spe"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Hotel Nila en Google Maps">
+            </iframe>
+        </div>
+    </section>
+
+
+</main>
+
+<!-- intl-tel-input JS y utils.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"></script>
+<script src="{% static 'js/contact.js' %}"></script> {# Asegúrate que este JS esté adaptado #}
+
+{% endblock %}

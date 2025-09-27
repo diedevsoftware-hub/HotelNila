@@ -1,0 +1,22 @@
+databases:
+  - name: hotelnila_db      # Nombre de tu base de datos
+    plan: free             # Plan gratuito (puedes cambiarlo después)
+    databaseName: hotelnila
+    user: hotelnila
+
+services:
+  - type: web
+    plan: free             # Plan gratuito para el servicio web
+    name: hotelnila          # Nombre de tu servicio web
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi" # Comando para iniciar tu app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hotelnila_db # Asegúrate que coincida con el nombre de la DB
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true   # Render generará una clave segura
+      - key: WEB_CONCURRENCY
+        value: 4

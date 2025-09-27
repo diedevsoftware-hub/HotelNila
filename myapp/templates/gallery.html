@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Galería de Fotos{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/gallery.css' %}">
+<!-- Fancybox CSS (para el lightbox) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+{% endblock %}
+
+{% block content %}
+<main class="gallery-page-content">
+
+    <!-- 1. HERO VISUAL DE INTRODUCCIÓN -->
+    <section class="gallery-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container text-center" data-aos="fade-up">
+            <h1>Galería de Hotel Nila</h1>
+            <p class="subtitle">Una mirada íntima a la elegancia, el confort y los momentos inolvidables que te esperan.
+            </p>
+            <!-- 2. Botón debajo del texto principal -->
+            <a href="#gallery-grid-container" class="button btn-ver-todo">Explorar Galería</a>
+        </div>
+        <a href="#gallery-grid-container" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- 3. CUERPO PRINCIPAL: GALERÍA DE IMÁGENES DINÁMICA -->
+    <section id="gallery-grid-container" class="gallery-main-section page-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestros Espacios y Detalles</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Sumérgete en la atmósfera única de Hotel Nila. Cada imagen captura la esencia de nuestro compromiso con
+                la excelencia y el diseño.
+            </p>
+
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="150">
+                <!-- Las imágenes se añadirán aquí. Puedes tener algunas iniciales y cargar más con JS si lo deseas. -->
+                <!-- Ejemplo de estructura de items (repite y varía las clases de tamaño) -->
+                <a href="{% static 'image/banos_inca_pintura.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Pintura de los Baños del Inca" class="gallery-item">
+                    <img src="{% static 'image/banos_inca_pintura.jpeg' %}" alt="Suite de Lujo Hotel Nila"
+                        loading="lazy">
+                </a>
+                <a href="{% static 'image/entrada.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Entrada de Hotel Nila" class="gallery-item gallery-item-large-h">
+                    <img src="{% static 'image/entrada.jpeg' %}" alt="Piscina Hotel Nila al atardecer"
+                        loading="lazy">
+                </a>
+                <a href="{% static 'image/granja_porcon_pintura.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Pintura de la Granja Porcón" class="gallery-item">
+                    <img src="{% static 'image/granja_porcon_pintura.jpeg' %}" alt="Restaurante Hotel Nila"
+                        loading="lazy">
+                </a>
+                <a href="{% static 'image/incas_pintura.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Pintura de los 14 Incas" class="gallery-item gallery-item-large-v">
+                    <img src="{% static 'image/incas_pintura.jpeg' %}" alt="Lobby Hotel Nila detalle"
+                        loading="lazy">
+                </a>
+                <a href="{% static 'image/plaza_armas_pintura.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Pintrura de la Plaza de Armas de Cajamarca" class="gallery-item">
+                    <img src="{% static 'image/plaza_armas_pintura.jpeg' %}" alt="Exterior Hotel Nila" loading="lazy">
+                </a>
+                <a href="{% static 'image/terraza1.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Vista a la Terraza" class="gallery-item">
+                    <img src="{% static 'image/terraza1.jpeg' %}" alt="Spa Hotel Nila" loading="lazy">
+                </a>
+                <a href="{% static 'image/terraza2.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Vista a la Terraza" class="gallery-item">
+                    <img src="{% static 'image/terraza2.jpeg' %}" alt="Detalle cama habitación"
+                        loading="lazy">
+                </a>
+                <a href="{% static 'image/terraza3.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Vista a la Terraza" class="gallery-item gallery-item-large-h">
+                    <img src="{% static 'image/terraza3.jpeg' %}" alt="Jardines Hotel Nila" loading="lazy">
+                </a>
+                <a href="{% static 'image/ventanillas_otuzco_pintura.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Pintura de las Ventanillas de Otuzco" class="gallery-item">
+                    <img src="{% static 'image/ventanillas_otuzco_pintura.jpeg' %}" alt="Bar Hotel Nila" loading="lazy">
+                </a>
+                <a href="{% static 'image/vigilancia.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Vigilancia 24/7" class="gallery-item gallery-item-large-h">
+                    <img src="{% static 'image/vigilancia.jpeg' %}" alt="Jardines Hotel Nila" loading="lazy">
+                </a>
+                <a href="{% static 'image/puerta.jpeg' %}" data-fancybox="hotel-gallery"
+                    data-caption="Ingreso al Hotel Nila" class="gallery-item">
+                    <img src="{% static 'image/puerta.jpeg' %}" alt="Bar Hotel Nila" loading="lazy">
+                </a>
+                <!-- Añade más items aquí -->
+
+            </div>
+
+            <!-- Opcional: Botón para cargar más imágenes -->
+            <!--
+            <div class="text-center" style="margin-top: 40px;" data-aos="fade-up">
+                <button id="load-more-gallery" class="button btn-secondary-gallery">Cargar Más Fotos</button>
+            </div>
+            -->
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<!-- Fancybox JS -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inicialización de Fancybox para la galería
+        Fancybox.bind("[data-fancybox='hotel-gallery']", {
+            // Opciones de Fancybox:
+            // thumbs: false, // Ocultar miniaturas si no las quieres
+            // idle: false, // No ocultar controles automáticamente
+            // Toolbar: { display: ["close"] }, // Simplificar la barra de herramientas
+            // caption: function (fancybox, carousel, slide) {
+            //    return slide.caption || ""; // Para mostrar el data-caption
+            // }
+        });
+
+        // Opcional: Lógica para "Cargar Más Fotos"
+        // const loadMoreBtn = document.getElementById('load-more-gallery');
+        // const galleryGrid = document.querySelector('.gallery-grid');
+        // let imageOffset = 9; // Número de imágenes iniciales
+        // const imagesPerLoad = 6;
+
+        // if (loadMoreBtn && galleryGrid) {
+        //     loadMoreBtn.addEventListener('click', function() {
+        //         // Aquí harías una petición AJAX para obtener más imágenes
+        //         // o tendrías un array de imágenes predefinido en JS para añadir.
+        //         // Ejemplo simple añadiendo elementos (deberías reemplazar con datos reales):
+        //         for (let i = 0; i < imagesPerLoad; i++) {
+        //             const newItem = document.createElement('a');
+        //             newItem.href = `{% static 'image/placeholder_gallery_${imageOffset + i}.webp' %}`; // Placeholder
+        //             newItem.className = 'gallery-item';
+        //             newItem.setAttribute('data-fancybox', 'hotel-gallery');
+        //             newItem.innerHTML = `<img src="{% static 'image/placeholder_gallery_${imageOffset + i}.webp' %}" alt="Nueva Imagen ${imageOffset + i}" loading="lazy">`;
+        //             galleryGrid.appendChild(newItem);
+        //             // Re-inicializar AOS para los nuevos elementos si es necesario o usar AOS.refresh()
+        //             if (typeof AOS !== 'undefined') AOS.refreshHard(); // O una forma más selectiva
+        //         }
+        //         imageOffset += imagesPerLoad;
+        //         // Podrías ocultar el botón si ya no hay más imágenes
+        //     });
+        // }
+
+    }); // Fin DOMContentLoaded
+</script>
+{% endblock %}

@@ -1,0 +1,465 @@
+/* myapp/static/styles/reservations.css */
+
+/* Importar variables y estilos base si no se heredan automáticamente o se quieren específicos */
+/* Si main.css ya define estas, y rooms.css usa variables de main.css, entonces no necesitas redefinir aquí */
+:root {
+    --reservations-font-primary: 'Poppins', sans-serif;
+    /* O la que uses globalmente */
+    --reservations-color-text-light: #ffffff;
+    --reservations-color-text-dark: #222222;
+    --reservations-color-accent: var(--rooms-color-accent, #d49d37);
+    /* Heredar de rooms o definir */
+    --reservations-color-success: #28a745;
+    --reservations-color-error: #dc3545;
+    --reservations-color-warning: #ffc107;
+    --reservations-bg-light: #f8f9fa;
+    --reservations-border-color: #ced4da;
+    --reservations-input-bg: #ffffff;
+    --reservations-input-focus-border: var(--reservations-color-accent);
+    --reservations-input-focus-shadow: rgba(212, 157, 55, 0.25);
+}
+
+/* Estilos para tema oscuro (ajustar según tu main.css) */
+html[data-theme="dark"] {
+    --reservations-color-text-dark: #e9ecef;
+    --reservations-bg-light: #000000;
+    /* Un gris oscuro para fondos "claros" */
+    --reservations-border-color: #495057;
+    --reservations-input-bg: #343a40;
+    --reservations-input-focus-shadow: rgba(212, 157, 55, 0.35);
+}
+
+.reservations-page-content .page-section {
+    /* Si usas esta clase de rooms.css */
+    padding: 70px 0;
+}
+
+/* HERO DE RESERVAS - ESTILO SIMILAR AL DE ROOMS */
+.reservations-hero-banner {
+    position: relative;
+    min-height: 80vh;
+    /* Un poco más bajo que el de rooms, o igual si prefieres */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--reservations-color-text-light);
+    background-image: url('../image/reservation.jpeg');
+    /* CAMBIA ESTA IMAGEN */
+    background-size: cover;
+    background-position: center center;
+    /* Ajustar para mostrar la parte más relevante */
+    background-attachment: fixed;
+    padding: 80px 20px;
+}
+
+/* .hero-overlay y .hero-content, .subtitle se heredan de rooms.css si están definidos globalmente o si rooms.css se carga antes */
+/* Si no, debes copiarlos aquí desde rooms.css */
+
+/* Si .hero-overlay no está global en rooms.css o main.css */
+.reservations-hero-banner .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+    z-index: 1;
+}
+
+/* Si .hero-content no está global */
+.reservations-hero-banner .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.reservations-hero-banner .hero-content h1 {
+    font-family: var(--reservations-font-primary);
+    /* O tu fuente de headings global */
+    font-size: 3.2rem;
+    /* Ajustar tamaño */
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    color: var(--reservations-color-text-light);
+}
+
+/* Si .subtitle no está global */
+.reservations-hero-banner .hero-content .subtitle {
+    font-size: 1.15rem;
+    color: #e9e9e9;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.button.btn-hero-reservations {
+    padding: 14px 32px;
+    border: 2px solid var(--reservations-color-text-light);
+    color: var(--reservations-color-text-light);
+    background-color: transparent;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease;
+    font-family: var(--reservations-font-primary);
+}
+
+.button.btn-hero-reservations:hover {
+    background-color: var(--reservations-color-text-light);
+    color: #000000
+}
+
+
+/* SECCIÓN DEL FORMULARIO DE RESERVA */
+.reserva-form-section {
+    padding: 60px 0;
+    background-color: var(--reservations-bg-light);
+}
+
+.reserva-form-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    /* Hereda de main.css */
+    margin-bottom: 15px;
+    font-family: var(--reservations-font-primary);
+}
+
+.reserva-form-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--current-text-muted-color);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.booking-form {
+    background-color: var(--rooms-bg-card-light);
+    /* Reutilizar variable de card si aplica */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    /* Limitar ancho del formulario */
+    margin: 0 auto;
+}
+
+html[data-theme="dark"] .booking-form {
+    background-color: var(--rooms-bg-card-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-grid {
+    display: grid;
+    gap: 30px;
+    /* Espacio entre los fieldsets */
+}
+
+.form-block {
+    border: 1px solid var(--reservations-border-color);
+    padding: 25px;
+    border-radius: 8px;
+    margin: 0;
+    /* Reset de margen por defecto del fieldset */
+}
+
+.form-block legend {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    padding: 0 10px;
+    margin-left: -10px;
+    /* Para alinear con el padding del fieldset */
+    font-family: var(--reservations-font-primary);
+}
+
+.form-block legend i {
+    margin-right: 8px;
+    color: var(--reservations-color-accent);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+    /* Para mensajes de error y posibles iconos */
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--current-text-color);
+}
+
+.required-asterisk {
+    color: var(--reservations-color-error);
+    margin-left: 2px;
+}
+
+.form-control {
+    /* Clase común para inputs y textarea */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--reservations-border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--reservations-font-primary);
+    background-color: var(--reservations-input-bg);
+    color: var(--current-text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--reservations-input-focus-border);
+    box-shadow: 0 0 0 0.2rem var(--reservations-input-focus-shadow);
+}
+
+.form-control.invalid {
+    border-color: var(--reservations-color-error) !important;
+    /* Sobrescribir focus */
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.form-control::placeholder {
+    color: var(--current-text-muted-color);
+    opacity: 0.7;
+}
+
+textarea.form-control {
+    min-height: 80px;
+    resize: vertical;
+}
+
+input[type="date"].form-control,
+input[type="time"].form-control {
+    /* Personalización adicional para date/time si es necesario */
+    appearance: none;
+    /* Quitar estilos por defecto del navegador si se usan librerías de calendario/hora */
+}
+
+/* Estilos para intl-tel-input */
+.iti {
+    width: 100%;
+}
+
+/* Para que ocupe el ancho del form-group */
+
+.room-selection .form-intro-text.small {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: var(--current-text-muted-color);
+}
+
+.room-type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.room-type-selection label {
+    font-size: 0.9rem;
+}
+
+.room-qty-input {
+    text-align: center;
+}
+
+/* Mensajes de Error y Éxito */
+.error-message {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--reservations-color-error);
+    margin-top: 5px;
+    min-height: 1.2em;
+    /* Para evitar saltos de layout */
+}
+
+.global-room-error#error_habitaciones {
+    /* Para el error general de habitaciones */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-messages-area {
+    /* Para mensajes generales del formulario (éxito/error global) */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: none;
+    /* Oculto por defecto */
+    border: 1px solid transparent;
+}
+
+.form-messages-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    display: block;
+}
+
+.form-messages-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    display: block;
+}
+
+.form-messages-area ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.form-submit-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: var(--current-text-muted-color);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.btn-reservar-submit {
+    background-color: var(--reservations-color-accent);
+    color: var(--reservations-color-text-light);
+    /* O texto oscuro si el acento es muy claro */
+    padding: 14px 35px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--reservations-font-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-reservar-submit:hover {
+    background-color: darken(var(--reservations-color-accent), 10%);
+    /* Define darken o usa un color más oscuro */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-reservar-submit i {
+    margin-right: 8px;
+}
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+
+@keyframes bounceArrow {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+
+    .reservations-hero-banner {
+        min-height: 80vh;
+        /* Ajustar altura mínima en móviles */
+        height: auto;
+        /* Permitir que el contenido defina la altura */
+        padding: 100px 0;
+        /* Más padding vertical en móviles */
+    }
+
+    .booking-form {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        /* Apilar campos en fila */
+        gap: 0;
+        /* Quitar gap y manejar con margin-bottom de form-group */
+    }
+
+    .form-row .form-group:first-child {
+        margin-bottom: 20px;
+        /* Asegurar espacio si se apilan */
+    }
+
+    .room-type-grid {
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas para selección de habitaciones */
+    }
+
+    .reserva-form-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservations-hero-banner .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .reservations-hero-banner .hero-content .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .reserva-form-title {
+        font-size: 1.8rem;
+    }
+
+    .room-type-grid {
+        grid-template-columns: 1fr;
+        /* Una columna para selección de habitaciones */
+    }
+
+    .btn-reservar-submit {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}

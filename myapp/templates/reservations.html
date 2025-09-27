@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Reservaciones{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+<link rel="stylesheet" href="{% static 'styles/reservations.css' %}">
+<!-- Flatpickr CSS (opcional, para selector de fecha mejorado) -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
+{% endblock %}
+
+
+{% block content %}
+<main class="reservations-page-content">
+
+    <!-- HERO RESERVAS (ESTILO SIMILAR A ROOMS HERO) -->
+    <section class="reservations-hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container text-center" data-aos="fade-up">
+            <h1>Haz tu Reserva</h1>
+            <p class="subtitle">Completa el formulario y asegura tu estadía en el Hotel Nila. <br>Una experiencia
+                inolvidable te espera.</p>
+            <a href="#reserva-form-section-id" class="button btn-hero-reservations">Comenzar Reserva</a>
+        </div>
+        <a href="#reserva-form-section-id" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section class="reserva-form-section" id="reserva-form-section-id">
+        <div class="container">
+            <h2 class="reserva-form-title" data-aos="fade-up">Realiza tu Solicitud de Reserva</h2>
+            <p class="reserva-form-intro" data-aos="fade-up" data-aos-delay="100">
+                Estamos encantados de que consideres Hotel Nila para tu próxima escapada. Por favor, completa los
+                siguientes campos y nuestro equipo se pondrá en contacto contigo a la brevedad para confirmar tu
+                reserva.
+            </p>
+            <form class="booking-form" id="bookingForm" method="POST" novalidate>
+                {% csrf_token %}
+
+                <div id="form-messages" class="form-messages-area"></div>
+
+                <div class="form-grid">
+
+                    <!-- BLOQUE 1: Detalles de la Estancia -->
+                    <fieldset class="form-block stay-details" data-aos="fade-up" data-aos-delay="150">
+                        <legend><i class="fas fa-calendar-alt"></i> Detalles de tu Estancia</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha_llegada">Fecha de Llegada <span
+                                        class="required-asterisk">*</span></label>
+                                <input type="date" id="fecha_llegada" name="fecha_llegada" class="form-control">
+                                <span class="error-message" id="error_fecha_llegada"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="hora_llegada">Hora Estimada de Llegada <span
+                                        class="required-asterisk">*</span></label>
+                                <input type="time" id="hora_llegada" name="hora_llegada" class="form-control">
+                                <span class="error-message" id="error_hora_llegada"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_salida">Fecha de Salida <span class="required-asterisk">*</span></label>
+                            <input type="date" id="fecha_salida" name="fecha_salida" class="form-control">
+                            <span class="error-message" id="error_fecha_salida"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adultos_total">Adultos <span class="required-asterisk">*</span></label>
+                                <input type="number" id="adultos_total" name="adultos_total" min="1" value="1"
+                                    class="form-control">
+                                <span class="error-message" id="error_adultos_total"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ninos_total">Niños (0-12)</label>
+                                <input type="number" id="ninos_total" name="ninos_total" min="0" value="0"
+                                    class="form-control">
+                                <span class="error-message" id="error_ninos_total"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- BLOQUE 2: Selección de Habitaciones -->
+                    <fieldset class="form-block room-selection" data-aos="fade-up" data-aos-delay="200">
+                        <legend><i class="fas fa-bed"></i> Selecciona tus Habitaciones <span
+                                class="required-asterisk">*</span></legend>
+                        <p class="form-intro-text small">Indica la cantidad para cada tipo. Deja en 0 si no deseas un
+                            tipo específico.</p>
+                        <span class="error-message global-room-error" id="error_habitaciones"></span>
+                        <div class="room-type-grid">
+                            <div class="form-group room-type-selection">
+                                <label for="qty_matrimonial_estandar">Matrimonial Estándar</label>
+                                <input type="number" id="qty_matrimonial_estandar" name="qty_matrimonial_estandar"
+                                    min="0" value="0" class="form-control room-qty-input">
+                            </div>
+                            <div class="form-group room-type-selection">
+                                <label for="qty_matrimonial_premium">Matrimonial Premium</label>
+                                <input type="number" id="qty_matrimonial_premium" name="qty_matrimonial_premium" min="0"
+                                    value="0" class="form-control room-qty-input">
+                            </div>
+                            <div class="form-group room-type-selection">
+                                <label for="qty_triple_familiar">Triple Familiar</label>
+                                <input type="number" id="qty_triple_familiar" name="qty_triple_familiar" min="0"
+                                    value="0" class="form-control room-qty-input">
+                            </div>
+                            <div class="form-group room-type-selection">
+                                <label for="qty_cuadruple_familiar">Cuádruple Familiar</label>
+                                <input type="number" id="qty_cuadruple_familiar" name="qty_cuadruple_familiar" min="0"
+                                    value="0" class="form-control room-qty-input">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- BLOQUE 3: Datos Personales -->
+                    <fieldset class="form-block personal-details" data-aos="fade-up" data-aos-delay="250">
+                        <legend><i class="fas fa-user-circle"></i> Tus Datos de Contacto</legend>
+                        <div class="form-group">
+                            <label for="nombre">Nombres y Apellidos <span class="required-asterisk">*</span></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Sofía Pérez"
+                                class="form-control">
+                            <span class="error-message" id="error_nombre"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com"
+                                    class="form-control">
+                                <span class="error-message" id="error_email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Celular <span class="required-asterisk">*</span></label>
+                                <input type="tel" id="telefono" name="telefono" class="form-control">
+                                <span class="error-message" id="error_telefono"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pais">Ciudad de Residencia <span class="required-asterisk">*</span></label>
+                            <input type="text" id="pais" name="pais" placeholder="Ej: Lima, Perú" class="form-control">
+                            <span class="error-message" id="error_pais"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentarios">Solicitudes Adicionales</label>
+                            <textarea id="comentarios" name="comentarios" rows="3"
+                                placeholder="Ej: Preferencia de piso alto, alergias, motivo del viaje..."
+                                class="form-control"></textarea>
+                        </div>
+                    </fieldset>
+
+                </div> <!-- Fin .form-grid -->
+
+                <div class="form-submit-area" data-aos="fade-up" data-aos-delay="300">
+                    <p class="form-note">Al enviar esta solicitud, nuestro equipo verificará la disponibilidad y se
+                        pondrá en contacto contigo a la brevedad para confirmar los detalles y proceder con la reserva.
+                    </p>
+                    <button type="submit" class="btn-reservar-submit"><i class="fas fa-paper-plane"></i> Enviar
+                        Solicitud</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"></script>
+<script src="{% static 'js/reservations.js' %}"></script>
+{% endblock %}

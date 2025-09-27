@@ -1,0 +1,775 @@
+/* myapp/static/styles/rooms.css */
+
+/* Paleta sugerida (ajusta a tus variables de main.css si es posible) */
+:root {
+    --rooms-font-primary: 'Poppins', sans-serif;
+    /* O Inter, Montserrat */
+    --rooms-color-text-light: #ffffff;
+    --rooms-color-text-dark: #222222;
+    --rooms-color-accent: #d49d37;
+    /* Dorado o tu azul marino */
+    --rooms-bg-card-light: #ffffff;
+    --rooms-bg-card-dark: #1a1a1a;
+    /* Si tienes tema oscuro para las cards */
+    --rooms-border-color: #e0e0e0;
+}
+
+.rooms-page-content .page-section {
+    padding: 70px 0;
+}
+
+.rooms-page-content .section-title {
+    font-family: var(--rooms-font-primary);
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--current-text-color);
+    text-align: center;
+}
+
+.rooms-page-content .section-subtitle,
+.rooms-page-content .subtitle {
+    font-size: 1.15rem;
+    color: var(--current-text-muted-color);
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+html[data-theme="dark"] .rooms-page-content .section-subtitle,
+html[data-theme="dark"] .rooms-page-content .subtitle {
+    color: #ffffff;
+}
+
+
+/* 1. HERO ROOMS */
+.rooms-hero {
+    position: relative;
+    min-height: 80vh;
+    /* O 100vh para pantalla completa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--rooms-color-text-light);
+    /* Opción A: Imagen de fondo */
+    background-image: url('../image/habitaciones.jpeg');
+    /* CAMBIA ESTA IMAGEN */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    /* Efecto parallax simple */
+    padding: 80px 20px;
+}
+
+.rooms-hero-video-bg {
+    /* Estilos para Opción B: Video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.rooms-hero .hero-overlay {
+    /* Siempre presente para legibilidad */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    /* Filtro oscuro */
+    z-index: 1;
+}
+
+.rooms-hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.rooms-hero h1 {
+    font-family: var(--rooms-font-primary);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    color: var(--rooms-color-text-light);
+}
+
+.rooms-hero .subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #e9e9e9;
+    max-width: 650px;
+    margin-bottom: 1.8em;
+}
+
+.button.btn-hero-rooms {
+    padding: 14px 32px;
+    border: 2px solid var(--rooms-color-text-light);
+    color: var(--rooms-color-text-light);
+    background-color: transparent;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease;
+}
+
+.button.btn-hero-rooms:hover {
+    background-color: var(--rooms-color-text-light);
+    color: var(--rooms-color-text-dark);
+}
+
+/* 4. FILTROS (OPCIONAL) */
+.room-filters {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 1px solid var(--current-border-color);
+    color: var(--current-text-muted-color);
+    padding: 8px 18px;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--rooms-font-primary);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--rooms-color-accent);
+    color: var(--rooms-color-text-light);
+    border-color: var(--rooms-color-accent);
+}
+
+html[data-theme="dark"] .filter-btn {
+    border-color: #555;
+}
+
+/* 2. LISTADO DE HABITACIONES (CARDS) */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.room-card {
+    background-color: var(--rooms-bg-card-light);
+    border: 1px solid var(--rooms-border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    display: flex;
+    /* Para que el filtro display:none/flex funcione bien */
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+html[data-theme="dark"] .room-card {
+    background-color: var(--rooms-bg-card-dark);
+    border-color: #333;
+}
+
+.room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.room-card-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    /* Altura fija para la imagen */
+}
+
+.room-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.room-card:hover .room-card-image img {
+    transform: scale(1.08);
+}
+
+.room-card-content {
+    padding: 25px;
+    flex-grow: 1;
+    /* Para que el contenido ocupe el espacio y los botones se alineen abajo */
+    display: flex;
+    flex-direction: column;
+}
+
+.room-name {
+    font-family: var(--rooms-font-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 10px;
+}
+
+.room-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--current-text-muted-color);
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* Empuja las amenidades y botón hacia abajo */
+}
+
+.room-amenities {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    display: grid;
+    /* O flex y flex-wrap */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+}
+
+.room-amenities li {
+    font-size: 0.9rem;
+    color: var(--current-text-muted-color);
+    display: flex;
+    align-items: center;
+}
+
+.room-amenities li i {
+    color: var(--rooms-color-accent);
+    margin-right: 8px;
+    font-size: 1.1em;
+    width: 20px;
+    /* Para alineación */
+    text-align: center;
+}
+
+.room-amenities span {
+    font-size: 0.9rem;
+    color: var(--current-text-muted-color);
+    display: flex;
+    align-items: center;
+}
+
+.room-amenities span i {
+    color: var(--rooms-color-accent);
+    margin-right: 8px;
+    font-size: 1.1em;
+    width: 20px;
+    /* Para alineación */
+    text-align: center;
+}
+
+
+.room-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 20px;
+}
+
+.button.btn-book-room {
+    padding: 10px 20px;
+    background-color: var(--rooms-color-accent);
+    color: var(--rooms-color-text-light);
+    border: 2px solid var(--rooms-color-accent);
+    border-radius: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    /* Alinea el botón a la izquierda si el contenedor es flex */
+    margin-top: auto;
+    /* Empuja el botón al final si el contenedor es flex */
+}
+
+.button.btn-book-room:hover {
+    background-color: transparent;
+    color: var(--rooms-color-accent);
+}
+
+
+
+
+.room-gallery-slider {
+    width: 100%;
+    height: 350px;
+    /* Ajusta la altura según tus imágenes */
+    border-radius: 10px;
+    overflow: hidden;
+    /* Para bordes redondeados en el slider */
+}
+
+.room-gallery-slider .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.room-gallery-slider .swiper-pagination-bullet-active {
+    background-color: var(--rooms-color-accent);
+}
+
+.room-gallery-slider .swiper-button-next,
+.room-gallery-slider .swiper-button-prev {
+    color: var(--rooms-color-accent);
+    /* O #fff con un fondo oscuro */
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 15px 10px;
+    border-radius: 50%;
+    width: 20px;
+    /* Ajustar tamaño contenedor */
+    height: 20px;
+    /* Ajustar tamaño contenedor */
+    top: 50%;
+}
+
+.room-gallery-slider .swiper-button-next::after,
+.room-gallery-slider .swiper-button-prev::after {
+    font-size: 1rem;
+    /* Tamaño de la flecha */
+}
+
+
+/* 7. TESTIMONIOS BREVES */
+.testimonials-grid-rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.testimonial-item-room {
+    background-color: var(--rooms-bg-card-light);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--rooms-border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+html[data-theme="dark"] .testimonial-item-room {
+    background-color: var(--rooms-bg-card-dark);
+    border-color: #333;
+}
+
+.testimonial-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    border: 3px solid var(--rooms-color-accent);
+}
+
+.testimonial-item-room blockquote {
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--current-text-muted-color);
+    margin-bottom: 15px;
+    quotes: "“" "”" "‘" "’";
+}
+
+.testimonial-item-room blockquote::before {
+    content: open-quote;
+    font-size: 1.5em;
+    line-height: 0;
+    position: relative;
+    top: 0.2em;
+    margin-right: 0.1em;
+    color: var(--rooms-color-accent);
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--current-text-color);
+    font-size: 0.9rem;
+}
+
+
+/* 8. CTA FINAL PARA RESERVAS */
+.final-cta-rooms {
+    background-color: var(--current-bg-footer-color);
+    /* O un degradado o imagen */
+    color: var(--rooms-color-text-light);
+}
+
+.final-cta-rooms h2 {
+    font-family: var(--rooms-font-primary);
+    font-size: 2.4rem;
+    color: var(--rooms-color-text-light);
+    margin-bottom: 15px;
+}
+
+.final-cta-rooms .subtitle {
+    color: #e0e0e0;
+    /* Un poco más claro que el texto principal del tema oscuro */
+    margin-bottom: 30px;
+}
+
+.button.btn-cta-final-rooms {
+    padding: 15px 40px;
+    background-color: var(--rooms-color-accent);
+    color: var(--rooms-color-text-light);
+    /* O texto oscuro si el acento es claro */
+    border: 2px solid var(--rooms-color-accent);
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.button.btn-cta-final-rooms:hover {
+    background-color: transparent;
+    color: var(--rooms-color-accent);
+}
+
+/* ESTILOS ACTUALIZADOS PARA ROOM CARDS CON SLIDER INTERNO */
+
+.room-card-image-slider.swiper-container {
+    /* Contenedor del slider */
+    position: relative;
+    width: 100%;
+    height: 250px;
+    /* Altura fija para el slider, igual que antes para la imagen única */
+    overflow: hidden;
+    /* Ya debería estar en .swiper-container pero por si acaso */
+    border-top-left-radius: 12px;
+    /* Si .room-card tiene border-radius */
+    border-top-right-radius: 12px;
+}
+
+.room-card-image-slider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para navegación y paginación DENTRO de las cards */
+.room-card-image-slider .swiper-pagination {
+    bottom: 8px !important;
+    /* Ajusta la posición de la paginación */
+}
+
+.room-card-image-slider .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 0.8;
+    width: 8px;
+    height: 8px;
+}
+
+.room-card-image-slider .swiper-pagination-bullet-active {
+    background-color: var(--rooms-color-accent, #fff);
+    /* Usa tu color de acento o blanco */
+    opacity: 1;
+}
+
+.room-card-image-slider .swiper-button-next,
+.room-card-image-slider .swiper-button-prev {
+    color: rgba(255, 255, 255, 0.9);
+    /* Flechas blancas */
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Fondo semitransparente para visibilidad */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.2s ease;
+}
+
+.room-card-image-slider .swiper-button-next:hover,
+.room-card-image-slider .swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.room-card-image-slider .swiper-button-next::after,
+.room-card-image-slider .swiper-button-prev::after {
+    font-size: 14px;
+    /* Tamaño de las flechas */
+    font-weight: bold;
+}
+
+.room-card-image-slider .swiper-button-prev {
+    left: 10px;
+}
+
+.room-card-image-slider .swiper-button-next {
+    right: 10px;
+}
+
+
+/* Estilos para la sección de VIDEOS DE HABITACIONES */
+
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.video-item {
+    text-align: center;
+    position: relative;
+    /* Para el overlay del botón de play */
+    border-radius: 8px;
+    overflow: hidden;
+    /* Para que el poster redondeado y el overlay funcionen */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-item a {
+    /* El enlace que abre Fancybox */
+    display: block;
+    position: relative;
+}
+
+.video-title {
+    font-family: var(--rooms-font-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--current-text-color);
+    margin-bottom: 10px;
+    padding: 15px 15px 0 15px;
+    /* Añadido padding si el título va sobre la imagen */
+    background-color: var(--rooms-bg-card-light);
+    /* Fondo para el título */
+    border-bottom: 1px solid var(--rooms-border-color);
+}
+
+html[data-theme="dark"] .video-title {
+    background-color: var(--rooms-bg-card-dark);
+    border-bottom-color: #333;
+}
+
+.video-poster {
+    width: 100%;
+    height: auto;
+    /* O una altura fija como 200px */
+    aspect-ratio: 16 / 9;
+    /* Para mantener proporción de video */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.video-item a:hover .video-poster {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+}
+
+.play-icon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Overlay oscuro */
+    opacity: 0;
+    /* Inicialmente oculto */
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    /* Para que no interfiera con el click al enlace */
+}
+
+.video-item a:hover .play-icon-overlay {
+    opacity: 1;
+}
+
+.play-icon-overlay i.fa-play {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+
+@keyframes bounceArrow {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+/* RESPONSIVE STYLES */
+@media (max-width: 992px) {
+    .rooms-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .rooms-hero .subtitle {
+        font-size: 1.15rem;
+    }
+
+    .rooms-page-content .section-title {
+        font-size: 2.2rem;
+    }
+
+    .room-card-image {
+        height: 220px;
+    }
+
+    .room-card-image-slider.swiper-container {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .rooms-hero {
+        min-height: 80vh;
+        /* Ajustar altura mínima en móviles */
+        height: auto;
+        /* Permitir que el contenido defina la altura */
+        padding: 100px 0;
+        /* Más padding vertical en móviles */
+    }
+
+    .rooms-hero {
+        min-height: 60vh;
+    }
+
+    .rooms-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .rooms-hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .rooms-page-content .section-title {
+        font-size: 2rem;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        /* Apilar cards */
+    }
+
+    .room-card-image {
+        height: 200px;
+    }
+
+    .room-amenities {
+        grid-template-columns: 1fr;
+    }
+
+    /* Lista de amenidades en una columna */
+    .room-gallery-slider {
+        height: 300px;
+    }
+
+    .room-card-image-slider.swiper-container {
+        height: 200px;
+    }
+
+    .room-card-image-slider .swiper-button-next,
+    .room-card-image-slider .swiper-button-prev {
+        width: 25px;
+        height: 25px;
+    }
+
+    .room-card-image-slider .swiper-button-next::after,
+    .room-card-image-slider .swiper-button-prev::after {
+        font-size: 12px;
+    }
+
+    .videos-grid {
+        grid-template-columns: 1fr;
+        /* Apilar videos en móvil */
+    }
+
+    .room-filters {
+        flex-direction: column;
+        /* Apila los botones verticalmente */
+        align-items: center;
+        /* Centra los botones apilados */
+        gap: 15px;
+        /* Espacio vertical entre los botones apilados */
+    }
+
+    .filter-btn {
+        width: 80%;
+        /* Opcional: que los botones ocupen más ancho */
+        max-width: 280px;
+        /* Opcional: pero no más de esto */
+        /* margin: 0 5px; <- Ya no es necesario si usas gap en el contenedor */
+        /* Si no usas gap en .room-filters en esta media query, puedes usar: */
+        /* margin-bottom: 15px; */
+    }
+}
+
+@media (max-width: 480px) {
+    .rooms-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .button.btn-hero-rooms,
+    .button.btn-cta-final-rooms {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .room-name {
+        font-size: 1.4rem;
+    }
+
+    .final-cta-rooms h2 {
+        font-size: 1.8rem;
+    }
+
+    .filter-btn {
+        padding: 10px 15px;
+        /* Ajustar padding si es necesario */
+        font-size: 0.95rem;
+        /* Opcional: hacer la fuente un poco más grande si se ven pequeños */
+    }
+}

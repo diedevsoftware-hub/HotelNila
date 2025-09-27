@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Inicio{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="main-content-area">
+
+    <!-- ====== HERO SECTION MODERNA ====== -->
+    <section class="hero-main">
+        <div class="hero-main-content container">
+            <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000">Bienvenido al Hotel Nila</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Una experiencia de
+                elegancia y confort.</p>
+            <div class="hero-cta-buttons" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <a href="{% url 'reservations' %}" class="button btn-primary">Reservar Ahora</a>
+                <a href="#rooms" class="button btn-secondary">Ver Habitaciones</a>
+            </div>
+        </div>
+        <a href="#rooms" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ====== Sobre Nosotros ====== -->
+    <section id="about" class="about page-section">
+        <div class="container about-container">
+            <div class="about-text" data-aos="fade-right" data-aos-delay="100">
+                <h2>Sobre Nosotros</h2>
+                <p>
+                    En Hotel Nila nos apasiona brindar a nuestros huéspedes un espacio de descanso, confort y
+                    naturaleza. Ubicados en una de las zonas más tranquilas, te ofrecemos un ambiente cálido y moderno.
+                </p>
+                <a href="/about" class="btn-learn-more">Conoce más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Habitaciones Destacadas ====== -->
+    <section id="rooms" class="rooms-preview page-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestras Habitaciones</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Descubre el confort y diseño en cada
+                detalle.</p>
+            <div class="rooms-grid">
+                <div class="room-card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{% static 'image/room_1.jpg' %}" alt="Habitación matrimonial" loading="lazy">
+                    <h3>Habitaciones matrimoniales</h3>
+                    <p>Espacio y lujo con vistas panorámicas.</p>
+                    <a href="/rooms" class="btn-details">Ver Detalles</a>
+                </div>
+                <div class="room-card" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="{% static 'image/room_2.jpg' %}" alt="Habitación familiar" loading="lazy">
+                    <h3>Habitaciones familiares</h3>
+                    <p>Comodidad superior para una estancia inolvidable.</p>
+                    <a href="/rooms" class="btn-details">Ver Detalles</a>
+                </div>
+                <!-- Si añades más cards, incrementa el data-aos-delay -->
+            </div>
+            <div class="text-center" style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
+                <a href="/rooms" class="button btn-primary">Ver Todas las Habitaciones</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ¿Por qué elegir Hotel Nila? ====== -->
+    <section id="why-nila" class="why-nila-section page-section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">¿Por qué elegir Hotel Nila?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Tu estadía perfecta comienza aquí.</p>
+            <div class="benefits-grid">
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-shield-alt benefit-icon"></i>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Protocolos de seguridad y limpieza para tu tranquilidad.</p>
+                </div>
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="250">
+                    <i class="fas fa-couch benefit-icon"></i>
+                    <h3>Habitaciones de Diseño</h3>
+                    <p>Decoradas con elegancia y equipadas para tu confort.</p>
+                </div>
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-wifi benefit-icon"></i>
+                    <h3>Wi-Fi Gratuito</h3>
+                    <p>Conexión de alta velocidad en todas nuestras instalaciones.</p>
+                </div>
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="350">
+                    <i class="fas fa-dollar-sign benefit-icon"></i>
+                    <h3>Mejor Precio Garantizado</h3>
+                    <p>Reserva directamente y obtén la mejor tarifa.</p>
+                </div>
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-map-marked-alt benefit-icon"></i>
+                    <h3>Excelente Ubicación</h3>
+                    <p>Cerca de atracciones principales y con fácil acceso.</p>
+                </div>
+                <div class="benefit-item" data-aos="fade-up" data-aos-delay="450">
+                    <i class="fas fa-concierge-bell benefit-icon"></i>
+                    <h3>Atención Personalizada</h3>
+                    <p>Nuestro equipo está listo para asistirte 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Reseñas ====== -->
+    <section id="testimonials" class="testimonials page-section">
+        <div class="container testimonials-container">
+            <h2 class="section-title" data-aos="fade-up">Lo que dicen nuestros huéspedes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <video controls preload="metadata" poster="{% static 'image/video_preview_1.jpg' %}"
+                        class="testimonial-video">
+                        <source src="{% static 'videos/cliente1.mp4' %}" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                    <div class="testimonial-content">
+                        <p class="review-text">"Una experiencia maravillosa, el hotel superó nuestras expectativas."</p>
+                        <p class="reviewer-name">- Ana Pérez</p>
+                        <p class="stars" aria-label="5 de 5 estrellas">★★★★★</p>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <video controls preload="metadata" poster="{% static 'image/video_preview_2.jpg' %}"
+                        class="testimonial-video">
+                        <source src="{% static 'videos/cliente2.mp4' %}" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                    <div class="testimonial-content">
+                        <p class="review-text">"El personal muy amable y las habitaciones impecables. ¡Volveremos!"</p>
+                        <p class="reviewer-name">- Carlos Gómez</p>
+                        <p class="stars" aria-label="5 de 5 estrellas">★★★★★</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 120,
+        easing: 'ease-in-out-quad',
+    });
+</script>
+{% endblock %}

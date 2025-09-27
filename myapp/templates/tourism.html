@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Turismo en Cajamarca{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'styles/tourism.css' %}">
+    <!-- Swiper.js CSS (si usas carrusel en el hero o para actividades) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+{% endblock %}
+
+{% block content %}
+<main class="tourism-page-content">
+
+    <!-- 1. HERO VISUAL E INMERSIVO -->
+    <section class="tourism-hero">
+        <!-- Opción A: Imagen de fondo fija (aplicada en CSS) -->
+        <!-- Opción B: Carrusel de Imágenes (estructura básica) -->
+        <!--
+        <div class="swiper hero-carousel">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('{% static 'image/turismo_hero_cajamarca_1.webp' %}');"></div>
+                <div class="swiper-slide" style="background-image: url('{% static 'image/turismo_hero_cajamarca_2.webp' %}');"></div>
+                <div class="swiper-slide" style="background-image: url('{% static 'image/turismo_hero_cajamarca_3.webp' %}');"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        -->
+        <div class="hero-overlay"></div>
+        <div class="hero-content container text-center" data-aos="fade-up">
+            <h1>Descubre la Magia de Cajamarca</h1>
+            <p class="subtitle">Explora paisajes inolvidables, una rica historia y aventuras únicas cerca del Hotel Nila.
+            <div class="hero-buttons">
+                <a href="#explorar-actividades" class="button btn-explora">Explorar Actividades</a>
+            </div>
+        </div>
+        <a href="#explorar-actividades" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- SECCIÓN DE INTRODUCCIÓN A ACTIVIDADES -->
+    <section id="explorar-actividades" class="intro-activities-section page-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Vive Cajamarca al Máximo</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Desde la imponente historia inca y colonial hasta la serenidad de sus paisajes naturales y la calidez de sus tradiciones, Cajamarca te espera con un sinfín de experiencias. En Hotel Nila, te ayudamos a descubrir cada tesoro.
+            </p>
+            <!-- 7. Íconos representativos de actividades (opcional: como un pequeño slider o grid) -->
+            <div class="activity-icons-strip" data-aos="fade-up" data-aos-delay="150">
+                <span><i class="fas fa-landmark"></i> Historia</span>
+                <span><i class="fas fa-mountain"></i> Naturaleza</span>
+                <span><i class="fas fa-spa"></i> Relax</span>
+                <span><i class="fas fa-cheese"></i> Gastronomía</span>
+                <span><i class="fas fa-users"></i> Cultura Viva</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LISTADO DE LUGARES TURÍSTICOS -->
+    <section class="tourist-spots-section page-section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Lugares Imperdibles</h2>
+
+            <!-- Categoría: Sitios Históricos y Culturales -->
+            <div class="category-block" data-aos="fade-up">
+                <h3 class="category-title"><i class="fas fa-archway"></i> Sitios Históricos y Culturales</h3>
+                <div class="spots-grid">
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{% static 'image/cuarto_rescate.webp' %}" alt="Cuarto del Rescate, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>1. Cuarto del Rescate</h4>
+                            <p>Símbolo de la historia peruana donde el Inca Atahualpa ofreció un tesoro por su libertad. Único vestigio inca en la ciudad.</p>
+                        </div>
+                    </article>
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="150">
+                        <img src="{% static 'image/catedral_cajamarca.webp' %}" alt="Catedral de Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>2. Catedral de Cajamarca</h4>
+                            <p>Joya del barroco colonial en la Plaza de Armas, con una impresionante fachada labrada en piedra volcánica.</p>
+                        </div>
+                    </article>
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="{% static 'image/iglesia_san_francisco.webp' %}" alt="Iglesia de San Francisco, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>3. Iglesia de San Francisco</h4>
+                            <p>Magnífica fachada y convento con museo de arte religioso, narrando siglos de devoción y arte sacro.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Categoría: Atractivos Naturales -->
+            <div class="category-block" data-aos="fade-up">
+                <h3 class="category-title"><i class="fas fa-leaf"></i> Atractivos Naturales y Arqueológicos</h3>
+                <div class="spots-grid">
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{% static 'image/ventanillas_otuzco.webp' %}" alt="Ventanillas de Otuzco" loading="lazy">
+                        <div class="spot-content">
+                            <h4>4. Ventanillas de Otuzco</h4>
+                            <p>Estructuras funerarias preincaicas talladas en roca, formando un paisaje arqueológico misterioso y fascinante.</p>
+                        </div>
+                    </article>
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="150">
+                        <img src="{% static 'image/cumbemayo.webp' %}" alt="Cumbemayo, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>5. Cumbemayo</h4>
+                            <p>Conjunto arqueológico con un "bosque de piedras" y un impresionante canal hidráulico incaico a más de 3,500 msnm.</p>
+                        </div>
+                    </article>
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="{% static 'image/banos_inca.webp' %}" alt="Baños del Inca, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>6. Baños del Inca</h4>
+                            <p>Famosas aguas termales con propiedades medicinales, donde el Inca Atahualpa solía bañarse. Ideal para relajarse.</p>
+                        </div>
+                    </article>
+                     <article class="spot-card" data-aos="fade-up" data-aos-delay="250">
+                        <img src="{% static 'image/laguna_san_nicolas.webp' %}" alt="Laguna San Nicolás, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>7. Laguna San Nicolás</h4>
+                            <p>Tranquila laguna en Namora, perfecta para paseos en bote, pesca artesanal y disfrutar de hermosos paisajes andinos.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Categoría: Naturaleza y Ecoturismo -->
+            <div class="category-block" data-aos="fade-up">
+                <h3 class="category-title"><i class="fas fa-hiking"></i> Naturaleza y Ecoturismo</h3>
+                 <div class="spots-grid">
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{% static 'image/granja_porcon.webp' %}" alt="Granja Porcón, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>8. Granja Porcón</h4>
+                            <p>Comunidad cooperativa autosostenible. Experimenta el turismo rural, recorre bosques y visita granjas y talleres.</p>
+                        </div>
+                    </article>
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="150">
+                        <img src="{% static 'image/mirador_santa_apolonia.webp' %}" alt="Mirador de Santa Apolonia, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>9. Mirador de Santa Apolonia</h4>
+                            <p>Ofrece vistas panorámicas de Cajamarca. En la cima se encuentra la legendaria "Silla del Inca".</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Categoría: Cultura y Tradiciones -->
+            <div class="category-block" data-aos="fade-up">
+                <h3 class="category-title"><i class="fas fa-drumstick-bite"></i> Cultura y Tradiciones</h3>
+                <div class="spots-grid full-width-spot"> <!-- Clase para que ocupe todo el ancho si es una sola "card" grande -->
+                    <article class="spot-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{% static 'image/ruta_queso_cajamarca.webp' %}" alt="Ruta del Queso, Cajamarca" loading="lazy">
+                        <div class="spot-content">
+                            <h4>10. Ruta del Queso</h4>
+                            <p>Cajamarca es famosa por sus quesos artesanales. Recorre pueblos como Namora o Porcón, aprende del proceso y degusta variedades únicas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+    {{ block.super }}
+    <!-- Swiper.js JS (si lo usas para el hero o iconos) -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Opcional: Inicialización del Carrusel del Hero (si usas la Opción B)
+            /*
+            var heroCarousel = new Swiper('.hero-carousel', {
+                loop: true,
+                effect: 'fade', // O 'slide'
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            */
+
+            // Animación suave para el indicador de scroll-down
+            const scrollIndicator = document.querySelector('.scroll-down-indicator');
+            if (scrollIndicator) {
+                // Podrías añadir una clase CSS con animación 'bounce' o 'pulse'
+                // o hacerlo con JS si prefieres más control.
+            }
+        });
+    </script>
+{% endblock %}

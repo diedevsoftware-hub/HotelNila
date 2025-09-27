@@ -1,0 +1,390 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}- Nuestras Habitaciones{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/rooms.css' %}">
+<!-- Swiper.js CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!-- Fancybox CSS (para los videos) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+{% endblock %}
+
+{% block content %}
+<main class="rooms-page-content">
+
+    <!-- 1. HERO VISUAL E INMERSIVO -->
+    <section class="rooms-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container text-center" data-aos="fade-up">
+            <h1>Descubre Nuestras Habitaciones</h1>
+            <p class="subtitle">Espacios diseñados para tu descanso, con vistas espectaculares y detalles únicos que te
+                enamorarán.</p>
+            <a href="#habitaciones-lista" class="button btn-hero-rooms">Ver Habitaciones</a>
+        </div>
+        <a href="#habitaciones-lista" class="scroll-down-indicator" aria-label="Desplazarse hacia abajo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- 2. LISTADO DE HABITACIONES (CARDS) -->
+    <section id="habitaciones-lista" class="rooms-list-section page-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Elige tu Santuario Privado</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Cada una de nuestras habitaciones y
+                suites ha sido meticulosamente diseñada para ofrecerte una experiencia de confort y elegancia sin igual.
+            </p>
+
+            <div class="room-filters" data-aos="fade-up" data-aos-delay="150">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="matrimoniales">Matrimoniales</button>
+                <button class="filter-btn" data-filter="familiares">Familiares</button>
+            </div>
+
+            <div class="rooms-grid">
+                <!-- Habitación 1: Matrimonial Estándar -->
+                <article class="room-card" data-category="matrimoniales" data-aos="fade-up" data-aos-delay="200">
+                    <div class="room-card-image-slider swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/cama_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - Cama" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/velador_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - Velador" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/espejo_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - Espejo" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/armario_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - Armario" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/bano_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - Vista 2" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/tv_matrimonial_estandar.jpeg' %}"
+                                    alt="Matrimonial Estándar - TV" loading="lazy"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="room-card-content">
+                        <h3 class="room-name">Matrimonial Estándar</h3>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-users"></i> Capacidad: 2 personas</span>
+                            <!-- <span><i class="fas fa-ruler-combined"></i> Superficie: 22m²</span> -->
+                        </div>
+                        <p class="room-description">Perfecta para parejas, nuestra Matrimonial Estándar ofrece un
+                            ambiente acogedor y todas las comodidades esenciales para una estancia confortable.</p>
+
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-bed"></i> Cama de dos plazas</li>
+                            <li><i class="fas fa-moon"></i> Dos veladores</li>
+                            <li><i class="fas fa-person-booth"></i> Espejo de cuerpo completo</li>
+                            <li><i class="fas fa-door-closed"></i> Armario</li>
+                            <li><i class="fas fa-shower"></i> Baño privado con ducha y agua caliente</li>
+                            <li><i class="fas fa-soap"></i> Artículos de aseo</li>
+                            <li><i class="fas fa-tv"></i> TV por Cable</li>
+                            <li><i class="fas fa-wifi"></i> Wi-Fi gratuito</li>
+                        </ul>
+                        <p class="room-price">Desde S/.50.00 / noche</p>
+                        <a href="{% url 'reservations' %}" class="button btn-book-room">Reservar Ahora</a>
+                    </div>
+                </article>
+
+                <!-- Habitación 2: Matrimonial Premium -->
+                <article class="room-card" data-category="matrimoniales" data-aos="fade-up" data-aos-delay="250">
+                    <div class="room-card-image-slider swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/cama_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Camas" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/balcon_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Balcón" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/velador_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Velador" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/mesa_silla_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Mesa y sillas" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/armario_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Armario" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/bano_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - Baño" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/tv_matrimonial_premium.jpeg' %}"
+                                    alt="Matrimonial Premium - TV" loading="lazy"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="room-card-content">
+                        <h3 class="room-name">Matrimonial Premium</h3>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-users"></i> Capacidad: 2 personas</span>
+                            <!-- <span><i class="fas fa-ruler-combined"></i> Superficie: 28m²</span> -->
+                        </div>
+                        <p class="room-description">Disfruta de un espacio superior con balcón y vistas privilegiadas.
+                            Ideal para una escapada romántica con un toque de sofisticación.</p>
+
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-mountain"></i> Balcón con vista (Recoleta y Estadio)</li>
+                            <li><i class="fas fa-couch"></i> Mueble tántrico</li>
+                            <li><i class="fas fa-bed"></i> Cama de dos plazas</li>
+                            <li><i class="fas fa-moon"></i> Dos veladores</li>
+                            <li><i class="fas fa-chair"></i> Mesa y dos sillas</li>
+                            <li><i class="fas fa-person-booth"></i> Espejo de cuerpo completo</li>
+                            <li><i class="fas fa-door-closed"></i> Armario</li>
+                            <li><i class="fas fa-shower"></i> Baño privado con ducha y agua caliente</li>
+                            <li><i class="fas fa-soap"></i> Artículos de aseo</li>
+                            <li><i class="fas fa-wifi"></i> Wi-Fi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV por Cable</li>
+                        </ul>
+                        <p class="room-price">Desde S/.60.00 / noche</p>
+                        <a href="{% url 'reservations' %}" class="button btn-book-room">Reservar Ahora</a>
+                    </div>
+                </article>
+
+                <!-- Habitación 3: Triple Familiar -->
+                <article class="room-card" data-category="familiares" data-aos="fade-up" data-aos-delay="300">
+                    <div class="room-card-image-slider swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/cama_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Camas" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/velador_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Veladores" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/espejo_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Espejo" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/armario_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Armario" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/bano_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Baño" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/ducha_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - Ducha" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/tele_triple_familiar.jpeg' %}"
+                                    alt="Triple Familiar - TV" loading="lazy"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="room-card-content">
+                        <h3 class="room-name">Triple Familiar</h3>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-users"></i> Capacidad: 3 personas</span>
+                            <!-- <span><i class="fas fa-ruler-combined"></i> Superficie: 35m²</span> -->
+                        </div>
+                        <p class="room-description">Espaciosa y confortable, nuestra habitación triple es perfecta para
+                            familias pequeñas o grupos de amigos que buscan comodidad y funcionalidad.</p>
+
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-bed"></i> Cama de dos plazas y cama individual</li>
+                            <li><i class="fas fa-chair"></i> Mesa y dos sillas</li>
+                            <li><i class="fas fa-eye-slash"></i> Vista interna</li>
+                            <li><i class="fas fa-moon"></i> Dos veladores</li>
+                            <li><i class="fas fa-person-booth"></i> Espejo de cuerpo completo</li>
+                            <li><i class="fas fa-door-closed"></i> Armario</li>
+                            <li><i class="fas fa-shower"></i> Baño privado con ducha y agua caliente</li>
+                            <li><i class="fas fa-soap"></i> Artículos de aseo</li>
+                            <li><i class="fas fa-wifi"></i> Wi-Fi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV por Cable</li>
+                        </ul>
+                        <p class="room-price">Desde S/.90.00 / noche</p>
+                        <a href="{% url 'reservations' %}" class="button btn-book-room">Reservar Ahora</a>
+                    </div>
+                </article>
+
+                <!-- Habitación 4: Cuádruple Familiar -->
+                <article class="room-card" data-category="familiares" data-aos="fade-up" data-aos-delay="350">
+                    <div class="room-card-image-slider swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/cama_cuadruple_familiar.jpeg' %}"
+                                    alt="Cuádruple Familiar - Camas" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/velador_cuadruple_familiar.jpeg' %}"
+                                    alt="Cuádruple Familiar - Veladores" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/mesa_silla_cuadruple_familiar.jpeg' %}"
+                                    alt="Cuádruple Familiar - Mesa y sillas" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/armario_cuadruple_familiar.jpeg' %}"
+                                    alt="Cuádruple Familiar - Armario" loading="lazy"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/bano_cuadruple_familiar.jpeg' %}"
+                                    alt="Cuádruple Familiar - Baño" loading="lazy"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="room-card-content">
+                        <h3 class="room-name">Cuádruple Familiar</h3>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-users"></i> Capacidad: 4 personas</span>
+                            <!-- <span><i class="fas fa-ruler-combined"></i> Superficie: 40m²</span> -->
+                        </div>
+                        <p class="room-description">Ideal para familias más grandes, esta habitación ofrece amplio
+                            espacio y dos camas matrimoniales para asegurar el confort de todos.</p>
+
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-bed"></i> Dos camas de dos plazas</li>
+                            <li><i class="fas fa-eye-slash"></i> Vista interna</li>
+                            <li><i class="fas fa-moon"></i> Cuatro veladores</li>
+                            <li><i class="fas fa-chair"></i> Mesa y dos sillas</li>
+                            <li><i class="fas fa-person-booth"></i> Espejo de cuerpo completo</li>
+                            <li><i class="fas fa-door-closed"></i> Armario</li>
+                            <li><i class="fas fa-shower"></i> Baño privado con ducha y agua caliente</li>
+                            <li><i class="fas fa-soap"></i> Artículos de aseo</li>
+                            <li><i class="fas fa-wifi"></i> Wi-Fi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV por Cable</li>
+                        </ul>
+                        <p class="room-price">Desde S/.120.00 / noche</p>
+                        <a href="{% url 'reservations' %}" class="button btn-book-room">Reservar Ahora</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. VIDEOS DE HABITACIONES -->
+    <section class="room-videos-section page-section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Explora Nuestras Habitaciones en Video</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Sumérgete en la experiencia Nila y
+                descubre cada detalle de nuestros espacios únicos.</p>
+            <div class="videos-grid">
+                <div class="video-item" data-aos="fade-up" data-aos-delay="150">
+                    <h4 class="video-title">Matrimonial Estándar</h4>
+                    <a href="{% static 'videos/cliente1.mp4' %}" data-fancybox="room-videos"
+                        data-caption="Recorrido Matrimonial Estándar">
+                        <img src="{% static 'image/cama_matrimonial_estandar.jpeg' %}" alt="Video Matrimonial Estándar"
+                            class="video-poster">
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                </div>
+                <div class="video-item" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="video-title">Matrimonial Premium</h4>
+                    <a href="{% static 'videos/matrimonial_premium.mp4' %}" data-fancybox="room-videos"
+                        data-caption="Recorrido Matrimonial Premium">
+                        <img src="{% static 'image/cama_matrimonial_premium.jpeg' %}" alt="Video Matrimonial Premium"
+                            class="video-poster">
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                </div>
+                <div class="video-item" data-aos="fade-up" data-aos-delay="250">
+                    <h4 class="video-title">Triple Familiar</h4>
+                    <a href="{% static 'videos/triple_familiar.mp4' %}" data-fancybox="room-videos"
+                        data-caption="Recorrido Triple Familiar">
+                        <img src="{% static 'image/cama_triple_familiar.jpeg' %}" alt="Video Triple Familiar"
+                            class="video-poster">
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                </div>
+                <div class="video-item" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="video-title">Cuádruple Familiar</h4>
+                    <a href="{% static 'videos/cuadruple_familiar.mp4' %}" data-fancybox="room-videos"
+                        data-caption="Recorrido Cuádruple Familiar">
+                        <img src="{% static 'image/cama_cuadruple_familiar.jpeg' %}"
+                            alt="Video Cuádruple Familiar" class="video-poster">
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TESTIMONIOS BREVES -->
+    <!--<section class="room-testimonials-section page-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Lo que Aman Nuestros Huéspedes</h2>
+            <div class="testimonials-grid-rooms" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-item-room">
+                    <img src="{% static 'image/hero_main_background.webp' %}" alt="Carlos M." class="testimonial-avatar"
+                        loading="lazy">
+                    <blockquote>
+                        “La Suite Frente al Mar fue simplemente espectacular. Dormir con el sonido del océano y
+                        despertar con esa vista no tiene precio. ¡El servicio impecable!”
+                    </blockquote>
+                    <p class="testimonial-author">- Carlos M.</p>
+                </div>
+                <div class="testimonial-item-room">
+                    <img src="{% static 'image/hero_main_background.webp' %}" alt="Laura G." class="testimonial-avatar"
+                        loading="lazy">
+                    <blockquote>
+                        “Nuestra Habitación Superior era un sueño. Los detalles, la limpieza y la comodidad superaron
+                        nuestras expectativas. Definitivamente volveremos.”
+                    </blockquote>
+                    <p class="testimonial-author">- Laura G.</p>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- 8. CTA FINAL PARA RESERVAS -->
+    <!-- <section class="final-cta-rooms page-section">
+        <div class="container text-center" data-aos="fade-up">
+            <h2>¿Listo para vivir la experiencia Nila en tu habitación ideal?</h2>
+            <p class="subtitle">Garantizamos el mejor precio y una estancia inolvidable. No esperes más.</p>
+            <a href="{% url 'reservations' %}" class="button btn-cta-final-rooms">Reserva tu Habitación Ahora</a>
+        </div>
+    </section>-->
+
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<!-- Swiper.js JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Fancybox JS -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inicialización de Sliders DENTRO de cada Room Card
+        const roomCardSliders = document.querySelectorAll('.room-card-image-slider');
+        roomCardSliders.forEach(function (sliderElement, index) {
+            new Swiper(sliderElement, {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0, // Sin espacio entre slides de una misma card
+                grabCursor: true,
+                pagination: {
+                    el: sliderElement.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: sliderElement.querySelector('.swiper-button-next'),
+                    prevEl: sliderElement.querySelector('.swiper-button-prev'),
+                },
+                // Para evitar conflictos si hay muchos sliders, puedes darles IDs únicos o usar clases más específicas si es necesario.
+            });
+        });
+
+        // Lógica de filtros (sin cambios, pero asegúrate que funcione con la nueva estructura si has cambiado algo fundamental)
+        const filterButtons = document.querySelectorAll('.room-filters .filter-btn');
+        const roomCards = document.querySelectorAll('.rooms-grid .room-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filterValue = button.getAttribute('data-filter');
+
+                roomCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all' || filterValue === cardCategory) {
+                        card.style.display = 'flex';
+                        if (typeof AOS !== 'undefined' && card.hasAttribute('data-aos')) {
+                            // Forzar re-animación de AOS si es necesario
+                            // card.classList.remove('aos-animate'); 
+                            // setTimeout(() => { card.classList.add('aos-animate'); }, 50);
+                            // O llamar a AOS.refreshHard() después de filtrar si hay problemas.
+                        }
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Inicialización de Fancybox para la galería de videos
+        Fancybox.bind("[data-fancybox='room-videos']", {
+            // Opciones personalizadas de Fancybox para videos si las necesitas
+            // Por ejemplo: YouTube, Vimeo, etc. si usas esos proveedores.
+            // Para videos locales .mp4, generalmente funciona bien por defecto.
+        });
+
+    }); // Fin de DOMContentLoaded
+</script>
+{% endblock %}

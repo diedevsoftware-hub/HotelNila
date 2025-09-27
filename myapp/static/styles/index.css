@@ -1,0 +1,510 @@
+/* styles/main.css */
+
+/* Definir variables adicionales si no existen */
+:root {
+  /* ... tus variables existentes ... */
+  --current-accent-color-darker: #0088bb;
+  /* Ejemplo para tema oscuro */
+  --current-bg-color-light-alt: #f8f9fa;
+  --current-card-bg: #ffffff;
+}
+
+html[data-theme="dark"] {
+  /* ... tus variables existentes para tema oscuro ... */
+  --current-accent-color-darker: #0077aa;
+  /* Ejemplo para tema oscuro */
+  --current-bg-color-dark-alt: #222222;
+  --current-card-bg-dark: #2c2c2c;
+  --current-border-color-dark: #444;
+}
+
+html[data-theme="light"] {
+  /* ... tus variables existentes para tema claro ... */
+  --current-accent-color-darker: #0077aa;
+  /* Ejemplo para tema claro */
+  --current-card-bg: #ffffff;
+}
+
+/* ... (tus estilos existentes de :root, body, header, footer, etc.) ... */
+
+/* Smooth scroll para anclas */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos Generales para Secciones (Opcional, pero recomendado) */
+.page-section {
+  padding: 60px 0;
+}
+
+.bg-light {
+  /* Para alternar colores de fondo en secciones */
+  background-color: var(--current-bg-color-light-alt, #f8f9fa);
+  /* Define esta variable o usa un color directamente */
+}
+
+html[data-theme="dark"] .bg-light {
+  background-color: var(--current-bg-color-dark-alt, #1a1a1a);
+  /* Define esta variable o usa un color directamente */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--current-text-color);
+  font-weight: 600;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: var(--current-text-muted-color);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ====== HERO SECTION MODERNA ====== */
+.hero-main {
+  position: relative;
+  height: 100vh;
+  /* Altura completa de la ventana gráfica */
+  min-height: 600px;
+  /* Altura mínima para asegurar visibilidad del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  /* Color de texto por defecto blanco para el hero */
+  /* Aplica aquí tu imagen de fondo */
+  background-image: url('../image/hero_main_background.webp');
+  /* Ajusta la ruta si es necesario */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Superposición (overlay) */
+.hero-main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* Ajusta la opacidad según necesites */
+  z-index: 1;
+  /* Asegura que esté sobre el fondo pero debajo del contenido */
+}
+
+.hero-main-content {
+  position: relative;
+  /* Para que esté sobre el overlay */
+  z-index: 2;
+  padding: 20px;
+  max-width: 800px;
+  /* Limita el ancho del contenido para mejor legibilidad */
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  /* Tamaño grande para el título */
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5em;
+  line-height: 1.6;
+}
+
+.hero-cta-buttons .button {
+  margin: 0.5em;
+  padding: 12px 28px;
+  /* Un poco más de padding */
+  border-radius: 30px;
+  /* Bordes redondeados */
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  /* Para que el margen funcione correctamente */
+}
+
+.hero-cta-buttons .btn-primary {
+  background-color: var(--current-accent-color);
+  /* Usa tu color de acento */
+  color: #fff;
+  border: 2px solid var(--current-accent-color);
+}
+
+.hero-cta-buttons .btn-primary:hover {
+  background-color: transparent;
+  color: #fff;
+  /* O var(--current-accent-color) si prefieres */
+  border-color: #fff;
+  /* O var(--current-accent-color) */
+}
+
+.hero-cta-buttons .btn-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  /* Borde blanco */
+}
+
+.hero-cta-buttons .btn-secondary:hover {
+  background-color: #fff;
+  color: var(--current-bg-color, #000);
+  /* Color del fondo del tema oscuro o un negro genérico */
+}
+
+html[data-theme="light"] .hero-cta-buttons .btn-secondary:hover {
+  color: var(--current-bg-color-light, #000);
+}
+
+
+/* Animación fadeInUp (CSS puro) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-load {
+  opacity: 0;
+  /* Inicialmente invisible */
+  animation: fadeInUp 1s ease-out forwards;
+  /* forwards mantiene el estado final */
+}
+
+.animate-delay-1 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.9s;
+}
+
+/* Si tienes más elementos */
+
+/* 4. Indicador de Scroll-Down */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.8rem;
+    animation: bounceArrow 2s infinite;
+    padding: 5px;
+}
+.scroll-down-indicator:hover {
+    color: #fff;
+}
+@keyframes bounceArrow {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+
+/* ESTILOS PARA OTRAS SECCIONES (AJUSTES Y MEJORAS) */
+
+/* Sección Sobre Nosotros */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: var(--current-text-color);
+}
+
+.btn-learn-more {
+  /* Estilo de botón genérico */ 
+  display: inline-block;
+  border: 2px solid #ffffff;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #d49d37;
+  color: #fff;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.btn-learn-more:hover {
+  background-color:transparent;
+  transition: all 0.3s ease;
+  /* Necesitarás definir esta variable */
+}
+
+
+/* Sección Habitaciones Preview */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.room-card {
+  background-color: var(--current-card-bg, #fff);
+  /* Define var(--current-card-bg) o usa color directo */
+  border: 1px solid var(--current-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--current-text-color);
+}
+
+html[data-theme="dark"] .room-card {
+  background-color: var(--current-card-bg-dark, #2a2a2a);
+  border-color: var(--current-border-color-dark, #444);
+}
+
+html[data-theme="dark"] .btn-learn-more {
+  background-color: #d49d37;
+  border-color: #d49d37;
+}
+
+html[data-theme="dark"] .btn-learn-more:hover {
+  background-color: transparent;
+  border-color: #d49d37;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-card h3 {
+  font-size: 1.5rem;
+  margin: 15px;
+  color: var(--current-text-color);
+}
+
+.room-card p {
+  font-size: 0.95rem;
+  margin: 0 15px 15px;
+  color: var(--current-text-muted-color);
+}
+
+.btn-details {
+  display: block;
+  margin: 15px;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  color: var(--current-accent-color);
+  border: 1px solid var(--current-accent-color);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: var(--current-accent-color);
+  color: #fff;
+}
+
+/* Sección Why Nila */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.benefit-item {
+  padding: 20px;
+  /* background-color: var(--current-card-bg); Opcional si quieres cards */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 10px rgba(0,0,0,0.05); */
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  color: var(--current-accent-color);
+  margin-bottom: 15px;
+}
+
+.benefit-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--current-text-color);
+}
+
+.benefit-item p {
+  font-size: 0.9rem;
+  color: var(--current-text-muted-color);
+}
+
+
+/* Sección Testimonios */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background-color: var(--current-card-bg, #fff);
+  border: 1px solid var(--current-border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  /* Para alinear texto debajo del video */
+}
+
+html[data-theme="dark"] .testimonial-card {
+  background-color: var(--current-card-bg-dark, #2a2a2a);
+  border-color: var(--current-border-color-dark, #444);
+}
+
+.testimonial-video {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  max-height: 300px;
+  /* Opcional, para que los videos no sean muy altos */
+  object-fit: cover;
+  /* Si usas poster */
+}
+
+.testimonial-content {
+  color: var(--current-text-color);
+}
+
+.review-text {
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--current-text-muted-color);
+}
+
+.reviewer-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.stars {
+  color: #f9a825;
+  /* Color amarillo para estrellas */
+  font-size: 1.1rem;
+}
+
+/* Ajustes generales para botones "btn" que podrías tener en otras secciones */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--current-accent-color);
+  color: #fff !important;
+  /* Sobrescribir si es necesario */
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--current-accent-color-darker);
+  /* Define esta variable */
+  transform: translateY(-2px);
+}
+
+/* Responsive para el Hero */
+@media (max-width: 768px) {
+  .hero-main {
+    min-height: 80vh;
+    /* Ajustar altura mínima en móviles */
+    height: auto;
+    /* Permitir que el contenido defina la altura */
+    padding: 100px 0;
+    /* Más padding vertical en móviles */
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    /* Reducir tamaño de fuente */
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    /* Reducir tamaño de fuente */
+  }
+
+  .hero-cta-buttons .button {
+    display: block;
+    /* Apilar botones verticalmente */
+    width: 80%;
+    /* O un ancho fijo como 250px */
+    max-width: 300px;
+    margin: 10px auto;
+    /* Centrar botones apilados */
+    padding: 14px 20px;
+    /* Ajustar padding para móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
